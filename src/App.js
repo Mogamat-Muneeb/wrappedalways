@@ -33,23 +33,25 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col  justify-center items-center">
-      <div className="text-red-400">
-      {!token ? (
-    <h1>Welcome </h1>
-      ) : (
-      <h1>You have logged in successfully!!</h1>
-      )}
+    <div className="w-full h-screen flex justify-center items-center ">
+      <div className="flex  justify-center items-center  px-3 md:px-0">
+        {!token ? (
+          <div className="flex flex-col gap-3 justify-center items-center text-center">
+            <p className=""><span className="font-bold text-2xl">See your Spotify Wrapped before the end of the year!!</span>  <br/> <span className="text-[16px] font-normal">Your top tracks, artists and genres all in one place. </span> </p>
+            <a
+              href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+            className="bg-[#22c55e] py-3 px-4 rounded-3xl text-center text-white shadow-xl text-[16px] "
+            >
+              Login with Spotify
+            </a>
           </div>
-      {!token ? (
-        <a
-          href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
-        >
-          Login With Spotify
-        </a>
-      ) : (
-        <button onClick={logout}>Logout</button>
-      )}
+        ) : (
+          <div>
+            <p>You have logged in successfully!!</p>
+            <button onClick={logout}>Logout</button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
