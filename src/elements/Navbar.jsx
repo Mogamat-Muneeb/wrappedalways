@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 export default function Navbar(props) {
-
-  console.log('navbar', props.token)
   return (
     <>
     {props.token ? (
@@ -14,6 +12,7 @@ export default function Navbar(props) {
         <div className='flex items-end justify-end w-full gap-4'>
         <Link to="stats" className='font-semibold'>Stats</Link>
         <Link to="account" className='font-semibold'>Account</Link>
+        <button onClick={props.logout}>Logout</button>
         </div>
     </div>
     ) : (

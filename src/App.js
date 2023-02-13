@@ -41,7 +41,7 @@ function App() {
   };
   return (
     <>
-    <Navbar token={token} />
+    <Navbar token={token} logout={logout} />
       <Routes>
         <Route path="/" element={
                 <div className="w-full h-screen flex justify-center items-center text-white bg-[#090a0c] ">
@@ -67,7 +67,7 @@ function App() {
                   ) : (
                     <div>
                       <p>You have logged in successfully!!</p>
-                      <button onClick={logout}>Logout</button>
+                      {/* <button onClick={logout}>Logout</button> */}
                     </div>
                   )}
                 </div>
