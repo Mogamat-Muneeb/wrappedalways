@@ -4,10 +4,12 @@ import {
   Route,
   Routes,
   Navigate,
+  Link
 } from "react-router-dom";
 import Sign from "./components/Sign";
 import Stats from "./components/Stats";
 import Account from "./components/Account";
+import Landing from "./components/Landing";
 import Navbar from "./elements/Navbar";
 import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
@@ -44,7 +46,7 @@ function App() {
   };
 
   const [userData, setUserData] = useState(null);
-
+//  user data
   useEffect(() => {
     fetch('https://api.spotify.com/v1/me', {
       headers: {
@@ -58,6 +60,8 @@ function App() {
   if (!userData) {
     return <div>Loading...</div>;
   }
+
+
 
 
   return (
@@ -88,15 +92,17 @@ function App() {
                     </a>
                   </div>
                 ) : (
-                  <div>
-                    Welcome, {userData.display_name}!
+                  <div className="flex gap-2">
+                    Welcome, {userData.display_name}! <br/>
+                    <Link to={"/account"}>Account</Link>
+                    <Landing token={token}/>
                   </div>
                 )}
               </div>
           }
         />
-        <Route path="/account" element={token ? <Account token={token} /> : <Navigate to="/" />}  />
-        <Route path="/stats" element={token ? <Stats />  : <Navigate to="/" />} />
+        <Route path="/account" element={token ? <Account token={token} logout={logout} /> : <Navigate to="/" />}  />
+        <Route path="/stats" element={token ? <Stats userData={userData} token={token}  />  : <Navigate to="/" />} />
       </Routes>
     </>
   );
