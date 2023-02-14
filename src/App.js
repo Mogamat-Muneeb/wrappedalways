@@ -96,7 +96,7 @@ function App() {
             </div>
           }
         />
-        <Route path="/account" element={token ? <Account /> : <Navigate to="/" />}  />
+        <Route path="/account" element={token ? <Account token={token} /> : <Navigate to="/" />}  />
         <Route path="/stats" element={token ? <Stats />  : <Navigate to="/" />} />
       </Routes>
     </>
