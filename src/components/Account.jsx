@@ -25,7 +25,7 @@ console.log("props.token", props.token)
   }
 
   return (
-    <div className='mt-10 text-[#1c1c1c] max-w-[1285px] mx-auto w-full '>
+    <div className='mt-10 text-[#1c1c1c] max-w-[1285px] mx-auto w-full md:px-0 px-2 '>
       <div className='flex flex-col items-start justify-center w-full h-full '>
       <h1 className='text-5xl font-extrabold'>Spotify Account</h1>
       <p className='font-normal text-[16px]'>The Spotify account that you're signed in with.</p>

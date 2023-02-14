@@ -9,7 +9,7 @@ const  Stats = (props) =>{
   return (
     <div >
 
-<div className='mt-10 text-[#1c1c1c] max-w-[1285px] mx-auto w-full'>
+<div className='mt-10 text-[#1c1c1c] max-w-[1285px] mx-auto w-full md:px-0 px-2'>
       <Link target="_blank"  to={`https://open.spotify.com/user/${props.userData.id}`}>   Logo spotify   open in Spotiy </Link>
 
     <div>
