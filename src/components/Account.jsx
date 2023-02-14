@@ -21,7 +21,7 @@ console.log("props.token", props.token)
 // console.log("cleaning user", cleanedUserId)
 
   if (!userData) {
-    return <div>Loading...</div>;
+    return <div className='flex items-center justify-center h-screen'>Loading...</div>;
   }
 
   return (

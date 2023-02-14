@@ -1,12 +1,10 @@
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   Routes,
   Navigate,
   Link
 } from "react-router-dom";
-import Sign from "./components/Sign";
 import Stats from "./components/Stats";
 import Account from "./components/Account";
 import Landing from "./components/Landing";
