@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
 export default function Account(props) {
-  console.log(props.token, "token in account")
 
   const [userData, setUserData] = useState(null);
 

@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* 
+
 *{
     background: #090a0c ;
-} */
+    color: white;
+}

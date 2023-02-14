@@ -67,10 +67,10 @@ function App() {
         <Route
           path="/"
           element={
-            <div className="w-full h-screen flex justify-center items-center text-white bg-[#090a0c] ">
-              <div className="flex items-center justify-center px-3 md:px-0">
+
+              <div className="">
                 {!token ? (
-                  <div className="flex flex-col items-center justify-center gap-3 text-center">
+                  <div className="flex flex-col items-center justify-center w-full h-screen gap-3 text-center">
                     <p className="">
                       <span className="text-2xl font-bold">
                         See your Spotify Wrapped before the end of the year!!
@@ -88,12 +88,12 @@ function App() {
                     </a>
                   </div>
                 ) : (
-                  <>
-  Welcome, {userData.display_name}!
-                  </>
+                  <div>
+                    Welcome, {userData.display_name}!
+                  </div>
                 )}
               </div>
-            </div>
+  
           }
         />
         <Route path="/account" element={token ? <Account token={token} /> : <Navigate to="/" />}  />
