@@ -70,7 +70,7 @@ function App() {
 
               <div className="">
                 {!token ? (
-                  <div className="flex flex-col items-center justify-center w-full h-screen gap-3 text-center">
+                  <div className="flex flex-col items-center justify-center w-full h-screen gap-3 px-2 text-center md:px-0">
                     <p className="">
                       <span className="text-2xl font-bold">
                         See your Spotify Wrapped before the end of the year!!
@@ -93,7 +93,6 @@ function App() {
                   </div>
                 )}
               </div>
-  
           }
         />
         <Route path="/account" element={token ? <Account token={token} /> : <Navigate to="/" />}  />
