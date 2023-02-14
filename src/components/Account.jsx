@@ -31,16 +31,16 @@ console.log("props.token", props.token)
       <p className='font-normal text-[16px]'>The Spotify account that you're signed in with.</p>
       </div>
       <div>
-      <h2 className='text-3xl font-extrabold'>Username:</h2>
+      <h2 className='text-4xl font-extrabold sm:text-3xl'>Username:</h2>
       <p>{userData.id}</p>
 
       </div>
       <div>
-      <h2 className='text-3xl font-extrabold'>Display Name:</h2>
+      <h2 className='text-4xl font-extrabold sm:text-3xl'>Display Name:</h2>
       <p>  {userData.display_name}</p>
       </div>
       <div>
-      <h2 className='text-3xl font-extrabold'>Sign Out</h2>
+      <h2 className='text-4xl font-extrabold sm:text-3xl'>Sign Out</h2>
       <button onClick={props.logout}>Logout</button>
       </div>
 
