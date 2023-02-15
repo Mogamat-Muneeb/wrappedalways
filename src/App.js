@@ -55,6 +55,25 @@ function App() {
       .then(data => setUserData(data));
   }, [token]);
 
+
+  const [tracks, setTracks] = useState([]);
+  
+  useEffect(() => {
+    fetch('https://api.spotify.com/v1/me/top/albums?time_range=medium_term&limit=10&offset=5', {
+        headers: {
+          'Authorization': 'Bearer' + token
+        }
+      })
+      .then(response => response.json())
+      .then(data => setTracks(data));
+  }, [token]);
+
+
+
+
+console.log('tracks', tracks)
+
+
   if (!userData) {
     return <div>Loading...</div>;
   }
@@ -83,7 +102,7 @@ function App() {
                       </span>
                     </p>
                     <a
-                      href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+                      href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=playlist-read-collaborative%20playlist-read-private%20user-follow-read%20user-library-read%20user-read-currently-playing%20user-read-email%20user-read-playback-position%20user-read-playback-state%20user-read-private%20user-read-recently-played%20user-top-read`}
                       className="bg-[#1DB954] py-3 px-4 rounded-3xl text-center text-white shadow-xl text-[16px] "
                     >
                       Login with Spotify
