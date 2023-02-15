@@ -48,7 +48,7 @@ function App() {
   useEffect(() => {
     fetch('https://api.spotify.com/v1/me', {
       headers: {
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer  ${token}`
       }
     })
       .then(response => response.json())
@@ -59,12 +59,15 @@ function App() {
   const [tracks, setTracks] = useState([]);
   
   useEffect(() => {
-    fetch('https://api.spotify.com/v1/me/top/albums?time_range=medium_term&limit=10&offset=5', {
+    fetch('https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10&offset=5', {
         headers: {
-          'Authorization': 'Bearer' + token
+          'Authorization': `Bearer  ${token}`
         }
       })
-      .then(response => response.json())
+      .then(response =>
+response.json()
+       
+         )
       .then(data => setTracks(data));
   }, [token]);
 
