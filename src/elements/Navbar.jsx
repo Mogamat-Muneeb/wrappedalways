@@ -15,13 +15,14 @@ export default function Navbar(props) {
     <>
       {props.token ? (
         <div className="text-black h-16  md:flex hidden items-center  fixed left-0 right-0 top-0 z-10 bg-[#171a20] ">
-          <div className="max-w-[1285px] mx-auto flex items-center w-full">
+          <div className="max-w-[1285px] mx-auto flex items-center w-full bg-[#171a20]">
             <div className="w-full bg-[#171a20] ">
               <Link to="/" className="bg-[#171a20] text-[#14c4e1]">
                 LOGO
               </Link>
             </div>
-            <div className="flex items-end justify-end w-full gap-4 bg-[#171a20]">
+            <div className="flex items-center justify-end w-full gap-4 bg-[#171a20]">
+              <input type="search" placeholder="Search "  className="p-1 pl-3 cursor-pointer rounded-3xl focus:outline-none focus:ring-0"/>
               <Link to="stats" className={`font-semibold bg-[#171a20] ${location.pathname === "/stats" && "text-[#14c4e1]"}`}>
                 Stats
               </Link>
@@ -35,7 +36,7 @@ export default function Navbar(props) {
       ) : null}
       {props.token ? (
         <>
-          <div className="sticky top-0 z-10 flex items-center h-16 px-3 text-white md:hidden">
+          <div className="sticky top-0 z-10 flex items-center h-16 px-4 text-white md:hidden">
             <div className="flex items-center justify-between w-full ">
               <Link to="/" className="flex items-center justify-start w-full">
                 LOGO

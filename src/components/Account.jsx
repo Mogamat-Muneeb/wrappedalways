@@ -29,44 +29,73 @@ export default function Account(props) {
   }
 
   return (
-    <div className="mt-10 text-[#1c1c1c] max-w-[1285px] mx-auto w-full md:px-0 px-2 flex flex-col gap-4 ">
-      <div className="flex flex-col items-start justify-center w-full h-full p-10 rounded-md ">
-        <h1 className="text-5xl font-extrabold ">Spotify Account</h1>
-        <p className="font-normal text-[16px] text-[#63707f] ">
-          The Spotify account that you're signed in with.
-        </p>
-        <h2 className="text-4xl font-extrabold sm:text-3xl">Username</h2>
-        <Link
-          target="_blank"
-          to={`https://open.spotify.com/user/${userData.id}`}
-        >
-          {userData.id}
-        </Link>
+    <div className="md:mt-24 mt-10 text-[#1c1c1c] max-w-[1285px] mx-auto w-full md:px-0  flex flex-col  ">
+      <div className="flex flex-col items-start justify-center w-full h-full gap-5 p-4 rounded-md md:p-10">
+        <div className="flex flex-col">
+          <h1 className="text-4xl font-extrabold ">Spotify Account</h1>
+          <p className="font-normal text-[16px] text-[#63707f] ">
+            The Spotify account that you're signed in with.
+          </p>
+        </div>
+        <div className="flex flex-col">
+          <h2 className="text-[16px] font-extrabold l">Username</h2>
+          <Link
+            target="_blank"
+            className="text-[#14c4e1]"
+            to={`https://open.spotify.com/user/${userData.id}`}
+          >
+            {userData.id}
+          </Link>
+        </div>
       </div>
 
-      <div className="h-full p-10 rounded-md ">
-        <h2 className="text-4xl font-extrabold sm:text-3xl">Email</h2>
-        <p className="text-[#63707f]">The email address associated with your account.</p>
-        <p>{userData.email}</p>
-      </div>
-      <div className="h-full p-10 rounded-md ">
-        <h2 className="text-4xl font-extrabold sm:text-3xl">Display Name</h2>
-        <p> {userData.display_name}</p>
-      </div>
-
-      <div className="h-full p-10 rounded-md ">
-        <h2 className="text-4xl font-extrabold sm:text-3xl">Plan</h2>
-        <p className="text-[#63707f]">Your spotify plan at the current moment</p>
-        <p> {userData.product}</p>
-      </div>
-      <div className="h-full p-10 rounded-md ">
-        <h2 className="text-4xl font-extrabold sm:text-3xl">Sign Out</h2>
-        <p className="text-[#63707f]">Sign out of your account on this browser.</p>
-        <button onClick={props.logout}>Logout</button>
+      <div className="flex flex-col h-full gap-5 p-4 rounded-md md:p-10 ">
+        <div className="flex flex-col">
+          <h2 className="text-2xl font-extrabold ">Email</h2>
+          <p className="text-[#63707f]">
+            The email address associated with your account.
+          </p>
+        </div>
+        <div>
+          <p className="text-[#14c4e1]">{userData.email}</p>
+        </div>
       </div>
 
-      {/* {userData.display_name}! */}
-      {/* {cleanedUserId} */}
+      <div className="flex flex-col h-full gap-5 p-4 rounded-md md:p-10">
+        <div className="flex flex-col">
+          <h2 className="text-2xl font-extrabold ">Display Name</h2>
+          <p className="text-[#63707f]">The name you are using on spotify.</p>
+        </div>
+        <div>
+          <p className="text-[#14c4e1]"> {userData.display_name}</p>
+        </div>
+      </div>
+
+      <div className="flex flex-col h-full gap-5 p-4 rounded-md md:p-10">
+        <div className="flex flex-col">
+          <h2 className="text-2xl font-extrabold ">Plan</h2>
+          <p className="text-[#63707f]">
+            Your spotify plan at the current moment
+          </p>
+        </div>
+        <div>
+          <p className="uppercase text-[#14c4e1]"> {userData.product}</p>
+        </div>
+      </div>
+
+      <div className="flex flex-col h-full gap-5 p-4 rounded-md md:p-10 ">
+        <div className="flex flex-col">
+          <h2 className="text-2xl font-extrabold ">Sign Out</h2>
+          <p className="text-[#63707f]">
+            Sign out of your account on this browser.
+          </p>
+        </div>
+        <div>
+          <button onClick={props.logout} className="text-[#14c4e1] uppercase text-[16px]">
+            Logout
+          </button>
+        </div>
+      </div>
       {/* <img src={userData.images[0].url} alt="Profile" /> */}
     </div>
   );
