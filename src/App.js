@@ -93,7 +93,7 @@ function App() {
                     </a>
                   </div>
                 ) : (
-                  <div className="flex gap-2 max-w-[1285px] mx-auto w-full">
+                  <div className="flex gap-2  mt-32 max-w-[1285px] mx-auto w-full">
                     Welcome, {userData.display_name}! <br/>
                     <Link to={"/account"}>Account</Link>
                     <Landing token={token}/>
