@@ -48,7 +48,7 @@ export default function Navbar(props) {
             className={`${open
               ? ' transition-all duration-500 bg-white'
               : ' translate-x-full  transition-all duration-500 bg-[#FFFFFF]'
-              } fixed   overflow-y-auto z-50  lg:hidden w-full overflow-x-hidden top-0`}
+              } fixed   overflow-y-auto z-50  lg:hidden w-full re-d overflow-x-hidden top-0`}
             >
               <div className="flex items-center justify-between w-full h-16 px-2  border-b border-[#bbbbbb]">
               <Link to="/" className="flex items-center justify-start w-full text-[#1DB954] "  onClick={handleClick}>LOGO</Link>

@@ -105,10 +105,8 @@ console.log(props.userData, "userData")
           target="_blank"
           to={`https://open.spotify.com/user/${props.userData.id}`}
         >
-          {" "}
-          Logo spotify open in Spotiy{" "}
+          Logo spotify open in Spotiy
         </Link>
-
         <div>
           <h1 className="text-4xl font-extrabold sm:text-3xl">Top Genres</h1>
         </div>
