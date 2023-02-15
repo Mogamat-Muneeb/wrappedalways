@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { MdOutlineSegment } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
+
+import {LogoIcon} from "../elements/Icons"
 export default function Navbar(props) {
   const [open, setOpen] = useState(false);
 
@@ -10,15 +12,15 @@ export default function Navbar(props) {
   };
   const location = useLocation();
 
-  console.log(location.pathname, "location")
+
   return (
     <>
       {props.token ? (
         <div className="text-black h-16  md:flex hidden items-center  fixed left-0 right-0 top-0 z-10 bg-[#171a20] ">
           <div className="max-w-[1285px] mx-auto flex items-center w-full bg-[#171a20]">
-            <div className="w-full bg-[#171a20] ">
-              <Link to="/" className="bg-[#171a20] text-[#14c4e1]">
-                LOGO
+            <div className="w-full bg-[#171a20] flex items-center ">
+              <Link to="/" className="bg-[#171a20] flex items-center h-5 pt-3 ">
+                <LogoIcon/>
               </Link>
             </div>
             <div className="flex items-center justify-end w-full gap-4 bg-[#171a20]">
@@ -39,7 +41,7 @@ export default function Navbar(props) {
           <div className="sticky top-0 z-10 flex items-center h-16 px-4 text-white md:hidden">
             <div className="flex items-center justify-between w-full ">
               <Link to="/" className="flex items-center justify-start w-full">
-                LOGO
+              <LogoIcon/>
               </Link>
               <div
                 className="flex items-center justify-end w-full"
@@ -62,7 +64,7 @@ export default function Navbar(props) {
                 className="flex items-center justify-start w-full text-[#1DB954] "
                 onClick={handleClick}
               >
-                LOGO
+                          <LogoIcon/>
               </Link>
               <div
                 className="flex items-center justify-end w-full"

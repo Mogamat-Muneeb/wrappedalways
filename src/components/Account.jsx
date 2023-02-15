@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Account(props) {
-  console.log("props.token", props.token);
+
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -14,11 +14,8 @@ export default function Account(props) {
       .then((response) => response.json())
       .then((data) => setUserData(data));
   }, [props.token]);
-  console.log("someting user", userData);
 
-  // const userId = userData.uri
-  //   const cleanedUserId = userId.replace('spotify:user:', '');
-  // console.log("cleaning user", cleanedUserId)
+
 
   if (!userData) {
     return (
@@ -38,10 +35,10 @@ export default function Account(props) {
           </p>
         </div>
         <div className="flex flex-col">
-          <h2 className="text-[16px] font-extrabold l">Username</h2>
+          <h2 className="text-2xl font-extrabold ">Username</h2>
           <Link
             target="_blank"
-            className="text-[#14c4e1]"
+            className="text-[#14c4e1] hover:text-white hover:underline"
             to={`https://open.spotify.com/user/${userData.id}`}
           >
             {userData.id}
@@ -91,7 +88,7 @@ export default function Account(props) {
           </p>
         </div>
         <div>
-          <button onClick={props.logout} className="text-[#14c4e1] uppercase text-[16px]">
+          <button onClick={props.logout} className="text-[#14c4e1] uppercase text-[16px] font-bold">
             Logout
           </button>
         </div>
