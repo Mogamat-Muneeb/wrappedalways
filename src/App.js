@@ -19,6 +19,7 @@ function App() {
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const [token, setToken] = useState("");
+  console.log(token)
 
   useEffect(() => {
     const hash = window.location.hash;

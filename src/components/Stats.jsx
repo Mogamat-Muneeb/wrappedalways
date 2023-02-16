@@ -131,7 +131,7 @@ const Stats = (props) => {
         <div className="flex justify-between">
           <div className="flex items-end gap-10">
             <img
-              src={userData.images[0].url}
+              src={userData.images[0]?.url}
               alt="Profile"
               className="w-40 h-40 border-white rounded-full border-[3px] bg-[url('https://i.postimg.cc/MGrqp8xj/Group-5.jpg)] "
             />
