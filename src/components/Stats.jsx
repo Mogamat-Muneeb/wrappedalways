@@ -6,7 +6,7 @@ const Stats = (props) => {
   const [playlist, setPlaylist] = useState([]);
   const [topGenres, setTopGenres] = useState([]);
   const [album, setAlbums] = useState([]);
-  console.log(props.userData, "userData");
+  const [userData, setUserData] = useState(null);
 
   // Get User’s Top Items
   useEffect(() => {
@@ -91,28 +91,53 @@ const Stats = (props) => {
       });
   }, [props.token]);
 
-  // console.log("Top album", album)
+  useEffect(() => {
+    fetch("https://api.spotify.com/v1/me", {
+      headers: {
+        Authorization: `Bearer ${props.token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => setUserData(data));
+  }, [props.token]);
 
-  if (!props.userData) {
+
+
+  if (!userData) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        Loading...
-      </div>
+      <div className="flex items-center justify-center h-screen ">
+     <div class="flex space-x-2">
+  <div aria-label="Loading..." role="status">
+    <svg class="h-7 w-7 animate-spin" viewBox="3 3 18 18">
+      <path
+        class="fill-[#14c4e1]"
+        d="M12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5ZM3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12Z"></path>
+      <path
+        class="fill-gray-800"
+        d="M16.9497 7.05015C14.2161 4.31648 9.78392 4.31648 7.05025 7.05015C6.65973 7.44067 6.02656 7.44067 5.63604 7.05015C5.24551 6.65962 5.24551 6.02646 5.63604 5.63593C9.15076 2.12121 14.8492 2.12121 18.364 5.63593C18.7545 6.02646 18.7545 6.65962 18.364 7.05015C17.9734 7.44067 17.3403 7.44067 16.9497 7.05015Z"></path>
+    </svg>
+  </div>
+</div>
+</div>
     );
   }
+
+  // console.log("Top album", album)
+
+
   return (
     <div>
       <div className="mt-32 text-[#1c1c1c] max-w-[1285px] mx-auto w-full md:px-0 px-2">
         <div className="flex justify-between">
           <div className="flex items-end gap-10">
             <img
-              src={props.userData.images[0].url}
+              src={userData.images[0].url}
               alt="Profile"
               className="w-40 h-40 border-white rounded-full border-[3px] bg-[url('https://i.postimg.cc/MGrqp8xj/Group-5.jpg)] "
             />
             {/* <img src="https://i.postimg.cc/MGrqp8xj/Group-5.jpg" alt="" /> */}
             <p className="text-3xl font-extrabold">
-              {props.userData.display_name}
+              {userData.display_name}
             </p>
           </div>
           <div className="flex flex-col items-end justify-start">
@@ -120,7 +145,7 @@ const Stats = (props) => {
             <Link
               target="_blank"
               className="hover:text-[#14c4e1] flex gap-2"
-              to={`https://open.spotify.com/user/${props.userData.id}`}
+              to={`https://open.spotify.com/user/${userData.id}`}
             >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +164,7 @@ const Stats = (props) => {
             </Link>
             </div>
             <div>
-            <p>{props.userData.followers.total} Followers</p>
+            <p>{userData.followers.total} Followers</p>
             </div>
           </div>
         </div>
