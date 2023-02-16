@@ -93,9 +93,11 @@ function App() {
                     </a>
                   </div>
                 ) : (
-                  <div className="flex gap-2  mt-32 max-w-[1285px] mx-auto w-full">
-                    Welcome, {userData.display_name}! <br/>
-                    <Link to={"/account"}>Account</Link>
+                  <div className="flex flex-col gap-2  mt-32 max-w-[1285px] mx-auto w-full">
+                    <div className="font-bold text-[16px] flex gap-4">
+                      <h1> Welcome, <span >{userData.display_name}!</span> </h1>
+                    <Link to={"/account"} className="text-[#14c4e1] hover:underline"> Go to your account </Link>
+                    </div>
                     <Landing token={token}/>
                   </div>
                 )}
