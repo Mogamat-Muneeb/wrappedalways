@@ -47,7 +47,7 @@ export default function Navbar(props) {
     <>
       {props.token ? (
         <>
-        <div className="text-black h-16  md:flex hidden items-center  fixed left-0 right-0 top-0 z-10 bg-[#171a20] ">
+        <div className={`text-white h-16  md:flex hidden items-center  fixed left-0 right-0 top-0 z-10 bg-[#171a20] shadow-xl ${location.pathname === "/stats" && "shadow-none"}`}>
           <div className="max-w-[1285px] mx-auto flex items-center w-full bg-[#171a20]">
             <div className="w-full bg-[#171a20] flex items-center ">
               <Link to="/" className="bg-[#171a20] flex items-center h-5 pt-3 ">
@@ -67,7 +67,7 @@ export default function Navbar(props) {
           </div>
         </div>
         {location.pathname === "/stats" &&(
-        <div className="md:flex  hidden justify-between w-full h-full pt-32 pb-20  bg-[#171a20]  items-center">
+        <div className="md:flex  hidden justify-between text-white w-full h-full pt-32 pb-20  bg-[#171a20] shadow-xl items-center">
           <div className="max-w-[1285px] mx-auto flex justify-between w-full">
           <div className="flex items-end w-full gap-10 bg-[#171a20]  ">
             <img
@@ -79,7 +79,7 @@ export default function Navbar(props) {
             <p className="text-3xl font-extrabold bg-transparent">{userData.display_name}</p>
           </div>
           <div className="flex flex-col items-end justify-start bg-[#171a20]  ">
-            <div className="flex gap-2 hover:text-[#14c4e1] font-bold bg-transparent">
+            <div className="flex gap-2 hover:text-[#14c4e1] font-bold w-full bg-transparent">
               <Link
                 target="_blank"
                 className="hover:text-[#14c4e1] flex gap-2 bg-transparent "

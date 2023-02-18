@@ -73,7 +73,7 @@ const Stats = (props) => {
       });
   }, [props.token]);
 
-  // console.log("TOp genres", topGenres);
+  console.log("TOp genres", topGenres);
 
   // Get Current Top Albums
 
@@ -144,20 +144,26 @@ const Stats = (props) => {
 
   return (
     <div className="h-full ">
-      <div className="w-full px-2 pt-32 md:px-0">
-  
-
+      <div className="w-full px-2 pt-10 md:px-0">
         <div className="flex flex-col gap-10 mt-10 max-w-[1285px] mx-auto  ">
           <div id="Genres">
             <h1 className="text-3xl font-extrabold">Top Genres</h1>
-            {topGenres.length === 0 && <div>you dont have any Top Genres</div>}
-            <div className="grid grid-cols-3 gap-3">
-              <span> {topGenres[0]}</span>
-              <span> {topGenres[1]}</span>
-              <span>{topGenres[2]}</span>
-              <span>{topGenres[3]}</span>
-              <span> {topGenres[4]}</span>
+            {topGenres.length ?  (
+            <div className="flex w-1/2 gap-3 pt-5">
+              {topGenres.map((item)=>{
+                return (
+                  <div key={item.id}>
+                     <span className="px-3.5 py-2 bg-[#171a20]  text-white shadow-xl text-sm tracking-wide rounded-full lowercase external-text hover:bg-gray-400"> {item}</span>
+                  </div>
+                )
+              })}
             </div>
+            ):(
+              <div className="pt-5">
+                You do not have any Top Genres at the moment !!
+                </div>
+            )
+         }
           </div>
           <div id="Artists">
             <h1 className="text-3xl font-extrabold ">Top Artists</h1>

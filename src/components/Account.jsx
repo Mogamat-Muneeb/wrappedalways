@@ -37,8 +37,8 @@ console.log(userData)
   }
 
   return (
-    <div className="md:mt-24 mt-10 text-[#1c1c1c] max-w-[1285px] mx-auto w-full md:px-0  flex flex-col   ">
-      <div className="flex flex-col items-start justify-center w-full h-full gap-5 p-4 rounded-md md:p-10 ">
+    <div className="md:mt-24 mt-10 text-[#1c1c1c] max-w-[1285px] mx-auto w-full md:px-0 gap-5  flex flex-col   ">
+      <div className="flex flex-col items-start justify-center w-full h-full gap-5 px-4 rounded-md md:px-0 ">
         <div className="flex flex-col">
           <h1 className="text-4xl font-extrabold ">Spotify Account</h1>
           <p className="font-normal text-[16px] text-[#63707f] ">
@@ -57,7 +57,7 @@ console.log(userData)
         </div>
       </div>
 
-      <div className="flex flex-col h-full gap-5 p-4 rounded-md md:p-10 ">
+      <div className="flex flex-col h-full gap-5 px-4 rounded-md md:px-0 ">
         <div className="flex flex-col">
           <h2 className="text-2xl font-extrabold ">Email</h2>
           <p className="text-[#63707f]">
@@ -69,7 +69,7 @@ console.log(userData)
         </div>
       </div>
 
-      <div className="flex flex-col h-full gap-5 p-4 rounded-md md:p-10">
+      <div className="flex flex-col h-full gap-5 px-4 rounded-md md:px-0">
         <div className="flex flex-col">
           <h2 className="text-2xl font-extrabold ">Display Name</h2>
           <p className="text-[#63707f]">The name you are using on spotify.</p>
@@ -79,7 +79,7 @@ console.log(userData)
         </div>
       </div>
 
-      <div className="flex flex-col h-full gap-5 p-4 rounded-md md:p-10">
+      <div className="flex flex-col h-full gap-5 px-4 rounded-md md:px-0">
         <div className="flex flex-col">
           <h2 className="text-2xl font-extrabold ">Plan</h2>
           <p className="text-[#63707f]">
@@ -91,7 +91,7 @@ console.log(userData)
         </div>
       </div>
 
-      <div className="flex flex-col h-full gap-5 p-4 rounded-md md:p-10 ">
+      <div className="flex flex-col h-full gap-5 px-4 rounded-md md:px-0">
         <div className="flex flex-col">
           <h2 className="text-2xl font-extrabold ">Sign Out</h2>
           <p className="text-[#63707f]">
