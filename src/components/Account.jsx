@@ -37,8 +37,8 @@ console.log(userData)
   }
 
   return (
-    <div className="md:mt-24 mt-10 text-[#1c1c1c] max-w-[1285px] mx-auto w-full md:px-0  flex flex-col  ">
-      <div className="flex flex-col items-start justify-center w-full h-full gap-5 p-4 rounded-md md:p-10">
+    <div className="md:mt-24 mt-10 text-[#1c1c1c] max-w-[1285px] mx-auto w-full md:px-0  flex flex-col   ">
+      <div className="flex flex-col items-start justify-center w-full h-full gap-5 p-4 rounded-md md:p-10 ">
         <div className="flex flex-col">
           <h1 className="text-4xl font-extrabold ">Spotify Account</h1>
           <p className="font-normal text-[16px] text-[#63707f] ">
