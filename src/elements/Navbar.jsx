@@ -67,7 +67,7 @@ export default function Navbar(props) {
           </div>
         </div>
         {location.pathname === "/stats" &&(
-        <div className="flex justify-between w-full h-full pt-32 pb-20  bg-[#171a20]  items-center">
+        <div className="md:flex  hidden justify-between w-full h-full pt-32 pb-20  bg-[#171a20]  items-center">
           <div className="max-w-[1285px] mx-auto flex justify-between w-full">
           <div className="flex items-end w-full gap-10 bg-[#171a20]  ">
             <img
@@ -76,19 +76,19 @@ export default function Navbar(props) {
               className="w-40 h-40 border-white rounded-full border-[3px] bg-[url('https://i.postimg.cc/MGrqp8xj/Group-5.jpg)] "
             />
             {/* <img src="https://i.postimg.cc/MGrqp8xj/Group-5.jpg" alt="" /> */}
-            <p className="text-3xl font-extrabold">{userData.display_name}</p>
+            <p className="text-3xl font-extrabold bg-transparent">{userData.display_name}</p>
           </div>
           <div className="flex flex-col items-end justify-start bg-[#171a20]  ">
-            <div className="flex gap-2 hover:text-[#14c4e1] font-bold">
+            <div className="flex gap-2 hover:text-[#14c4e1] font-bold bg-transparent">
               <Link
                 target="_blank"
-                className="hover:text-[#14c4e1] flex gap-2"
+                className="hover:text-[#14c4e1] flex gap-2 bg-transparent "
                 to={`https://open.spotify.com/user/${userData.id}`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  class="w-6 h-6 fill-current"
+                  class="w-6 h-6 fill-current bg-transparent"
                 >
                   <g>
                     <path fill="none" d="M0 0h24v24H0z"></path>
@@ -101,8 +101,8 @@ export default function Navbar(props) {
                 Logo spotify open in Spotiy
               </Link>
             </div>
-            <div>
-              <p>{userData.followers.total} Followers</p>
+            <div className="bg-transparent">
+              <p className="bg-transparent">{userData.followers.total} Followers</p>
             </div>
           </div>
 
