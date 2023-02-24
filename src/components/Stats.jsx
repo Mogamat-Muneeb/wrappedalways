@@ -8,6 +8,7 @@ const Stats = (props) => {
   const [album, setAlbums] = useState([]);
   const [userData, setUserData] = useState(null);
   const [artist, setArtist] = useState(null);
+  const [showing, setShowing] = useState("Top Genres");
 
   // Get User’s Top Items
   useEffect(() => {
@@ -73,7 +74,7 @@ const Stats = (props) => {
       });
   }, [props.token]);
 
-  console.log("TOp genres", topGenres);
+  // console.log("TOp genres", topGenres);
 
   // Get Current Top Albums
 
@@ -103,7 +104,6 @@ const Stats = (props) => {
       .then((data) => setUserData(data));
   }, [props.token]);
 
-  
   useEffect(() => {
     fetch(
       "https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=10&offset=5",
@@ -126,11 +126,11 @@ const Stats = (props) => {
           <div aria-label="Loading..." role="status">
             <svg class="h-7 w-7 animate-spin" viewBox="3 3 18 18">
               <path
-                class="fill-[#14c4e1]"
+                class="fill-[#22c55e]"
                 d="M12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5ZM3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12Z"
               ></path>
               <path
-                class="fill-gray-800"
+                class="fill-[#f3f4f6]"
                 d="M16.9497 7.05015C14.2161 4.31648 9.78392 4.31648 7.05025 7.05015C6.65973 7.44067 6.02656 7.44067 5.63604 7.05015C5.24551 6.65962 5.24551 6.02646 5.63604 5.63593C9.15076 2.12121 14.8492 2.12121 18.364 5.63593C18.7545 6.02646 18.7545 6.65962 18.364 7.05015C17.9734 7.44067 17.3403 7.44067 16.9497 7.05015Z"
               ></path>
             </svg>
@@ -140,86 +140,184 @@ const Stats = (props) => {
     );
   }
 
-  // console.log("Top album", album)
 
   return (
     <div className="h-full ">
       <div className="w-full px-2 pt-10 md:px-0">
+        <div className="flex w-full  max-w-[1285px] mx-auto justify-between ">
+          <span
+            className={`cursor-pointer  ${showing === "Top Genres" && "font-bold text-[#22c55e]"}`}
+            onClick={() => setShowing("Top Genres")}
+          >
+           Top  Genres
+          </span>
+          <span
+            className={`cursor-pointer  ${
+              showing === "Top Artists" && "font-bold text-[#22c55e]"
+            }`}
+            onClick={() => setShowing("Top Artists")}
+          >
+           Top  Artists
+          </span>
+          <span
+            className={`cursor-pointer  ${showing === "Top Tracks" && "font-bold text-[#22c55e]"}`}
+            onClick={() => setShowing("Top Tracks")}
+          >
+            Top Tracks
+          </span>
+          <span
+            className={`cursor-pointer  ${
+              showing === "Top Playlists" && "font-bold text-[#22c55e]"
+            }`}
+            onClick={() => setShowing("Top Playlists")}
+          >
+            Playlists
+          </span>
+        </div>
         <div className="flex flex-col gap-10 mt-10 max-w-[1285px] mx-auto  ">
-          <div id="Genres">
-            <h1 className="text-3xl font-extrabold">Top Genres</h1>
-            {topGenres.length ?  (
-            <div className="flex w-1/2 gap-3 pt-5">
-              {topGenres.map((item)=>{
-                return (
-                  <div key={item.id}>
-                     <span className="px-3.5 py-2 bg-[#171a20]  text-white shadow-xl text-sm tracking-wide rounded-full lowercase external-text hover:bg-gray-400"> {item}</span>
+          {showing === "Top Genres" && (
+            <>
+              <div id="Genres">
+                <h1 className="text-3xl font-extrabold">Your Top Genres</h1>
+                {topGenres.length ? (
+                  <div className="flex flex-col gap-3 pt-5">
+                    {topGenres.map((item, index) => {
+                      return (
+                        <div key={item.id}>
+                          <h2 className="flex">
+                            <span className="text-[#9ca3af] pr-2">{index + 1}.</span>
+                            <span> {item}</span>
+                          </h2>
+                        </div>
+                      );
+                    })}
                   </div>
-                )
-              })}
-            </div>
-            ):(
-              <div className="pt-5">
-                You do not have any Top Genres at the moment !!
-                </div>
-            )
-         }
-          </div>
-          <div id="Artists">
-            <h1 className="text-3xl font-extrabold ">Top Artists</h1>
-            {artist.length === 0 && <div>you dont have any top artist yet</div>}
-            {artist?.map((item) => {
-              return (
-                <div key={item.id}>
-                  <div className="flex gap-2">
-                    <p>{item.name}</p>
+                ) : (
+                  <div className="pt-5">
+                    You do not have any Top Genres at the moment !!
                   </div>
-                </div>
-              );
-            })}
-          </div>
-          <div id="Songs">
-            <h1 className="text-3xl font-extrabold ">Top Songs</h1>
-            <div className="flex flex-col gap-2">
-              {tracks.length === 0 && (
-                <div>you dont have any Top Songs yet</div>
-              )}
-              {tracks.map((item) => {
-                return (
-                  <div key={item.id}>
-                    <div className="flex gap-2">
-                      <p>{item.name}</p>
-                      <div className="flex gap-2 text-[12px] text-gray-200">
-                        {item.artists.map((value) => (
-                          <div key={value.id}>
-                            <p>{value.name}</p>
+                )}
+              </div>
+            </>
+          )}
+
+          {showing === "Top Artists" && (
+            <>
+              <div id="Artists">
+                <h1 className="text-3xl font-extrabold ">Your Top Artists</h1>
+                {artist.length === 0 && (
+                  <div>you dont have any top artist yet</div>
+                )}
+                <div className="flex flex-col gap-6 pt-5">
+                {artist?.map((item, index) => {
+                  return (
+                    <div key={item.id}>
+                        <h2>
+                          <span className="text-[#9ca3af] pr-2">{index + 1}.</span>
+                          <span className="font-medium">{item.name}</span>
+                      </h2>
+                      <div className="flex flex-wrap items-center gap-1 pl-4">
+                      {item?.genres.map((value, index) => {
+                        return (
+                          <div key={value.id} >
+                              <h2 className="flex items-center justify-center gap-2 ">
+                              <span>  {!index == 0  && value.length &&  "•"}</span>
+                                <span className="text-sm">{value}  </span>
+                            </h2>
                           </div>
-                        ))}
+                        );
+                      })}
                       </div>
                     </div>
+                  );
+                })}
+                </div>
+              </div>
+            </>
+          )}
+
+          {showing === "Top Tracks" && (
+            <>
+              <div id="Tracks">
+                <h1 className="text-3xl font-extrabold ">Your Top Tracks</h1>
+                <div className="flex flex-col gap-2">
+                  {tracks.length === 0 && (
+                    <div>you dont have any Top Songs yet</div>
+                  )}
+                  <div className="flex flex-col gap-6 pt-5">
+                  {tracks.map((item, index) => {
+                    console.log(item, "item in tracks");
+                    return (
+                      <div key={item.id}>
+                        <div className="flex flex-col gap-2 ">
+                          <h2>
+                            <span  className="text-[#9ca3af] pr-2"> {index + 1}.</span>
+                            <span className="font-medium">{item.name}</span>
+                           </h2>
+                          <div className="flex gap-2 pl-4 text-sm text-gray-200">
+                            {item.artists.map((value, index) => (
+                              <div key={value.id} className="">
+                                <p className="flex items-center gap-2">
+                                  <span> {index == 1 && "•"}</span>
+                                <span className="">{value.name}</span>
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
                   </div>
-                );
-              })}
-            </div>
-          </div>
-          <div id="Playlists">
-            <h1 className="text-3xl font-extrabold ">Playlists</h1>
-            <div>
-              {playlist.length === 0 && (
-                <div>you dont have any Playlists yet</div>
-              )}
-              {playlist.total}
-              {playlist.items?.map((item) => {
-                return (
-                  <div key={item.id}>
-                    <div className="flex gap-2">
-                      <p>{item.name}</p>
-                    </div>
+                </div>
+              </div>
+            </>
+          )}
+
+          {showing === "Top Playlists" && (
+            <>
+              <div id="Playlists" className="mb-10">
+                <h1 className="text-3xl font-extrabold ">Your Playlists</h1>
+                <div>
+                  {playlist.length === 0 && (
+                    <div>you dont have any Playlists yet</div>
+                  )}
+                  <span>
+                    You have{" "}
+                    {playlist.total > 1
+                      ? `${playlist.total} playlists`
+                      : `${playlist.total} playlist`}
+                  </span>
+                  <div className="flex flex-wrap grid-cols-5 gap-4 pt-10 md:grid">
+                  {playlist.items?.map((item, index) => {
+                    return (
+                      <div key={item.id}>
+                        <div className="pb-5 ">
+                        <h2 className="pb-5">
+                            <span className="text-[#9ca3af] pr-2">{index + 1}. </span>
+                            <span>{item.name}</span>
+                        </h2>
+                          {item?.images.map((value, index) => {
+
+                            return (
+                              <div key={value.id}>
+                                <div className="">
+                                <img src={value.url}  className="relative w-56 h-56 bg-cover rounded shadow-xl" alt="" />
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+     
+                      </div>
+                    );
+                  })}
                   </div>
-                );
-              })}
-            </div>
-          </div>
+                </div>
+              </div>
+            </>
+          )}
+
         </div>
       </div>
     </div>
