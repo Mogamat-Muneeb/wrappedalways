@@ -40,7 +40,7 @@ export default function Account(props) {
       <div className="flex flex-col items-start justify-center w-full h-full px-4 rounded-md md:px-0 ">
         <div className="flex flex-col">
           <h1 className="text-4xl font-extrabold ">Spotify Account</h1>
-          <p className="font-normal text-[16px] text-[#63707f] ">
+          <p className="font-normal  text-[14px] text-[#63707f] ">
             The Spotify account that you're signed in with.
           </p>
         </div>
@@ -48,7 +48,7 @@ export default function Account(props) {
           <h2 className="text-[24px] font-semibold ">Username</h2>
           <Link
             target="_blank"
-            className="text-[#22c55e] relative cursor-pointer transition-all duration-300  before:absolute before:-bottom-[0.1px] before:left-0 before:w-0 before:h-[1.5px] before:rounded-full before:opacity-0 before:transition-all before:duration-300 before:bg-[#22c55e] hover:before:w-full hover:before:opacity-100"
+            className="text-[#22c55e] relative cursor-pointer transition-all duration-300 text-sm font-light  before:absolute before:-bottom-[0.1px] before:left-0 before:w-0 before:h-[1.5px] before:rounded-full before:opacity-0 before:transition-all before:duration-300 before:bg-[#22c55e] hover:before:w-full hover:before:opacity-100"
             to={`https://open.spotify.com/user/${userData.id}`}
           >
             {userData.id}
@@ -59,41 +59,41 @@ export default function Account(props) {
       <div className="flex flex-col h-full gap-5 px-4 rounded-md md:px-0 ">
         <div className="flex flex-col">
           <h2 className="text-[24px] font-semibold ">Email</h2>
-          <p className="text-[#63707f]">
+          <p className="text-[#63707f] text-[14px]">
             The email address associated with your account.
           </p>
         </div>
         <div>
-          <p className="text-[#22c55e]">{userData.email}</p>
+          <p className="text-[#22c55e] text-sm font-light">{userData.email}</p>
         </div>
       </div>
 
       <div className="flex flex-col h-full gap-5 px-4 rounded-md md:px-0">
         <div className="flex flex-col">
           <h2 className="text-[24px] font-extrabold ">Display Name</h2>
-          <p className="text-[#63707f]">The name you are using on spotify.</p>
+          <p className="text-[#63707f]  text-[14px]">The name you are using on spotify.</p>
         </div>
         <div>
-          <p className="text-[#22c55e]"> {userData.display_name}</p>
+          <p className="text-[#22c55e] text-sm font-light"> {userData.display_name}</p>
         </div>
       </div>
 
       <div className="flex flex-col h-full gap-5 px-4 rounded-md md:px-0">
         <div className="flex flex-col">
           <h2 className="text-[24px] font-semibold ">Plan</h2>
-          <p className="text-[#63707f]">
+          <p className="text-[#63707f]  text-[14px]">
             Your spotify plan at the current moment
           </p>
         </div>
         <div>
-          <p className="uppercase text-[#22c55e]"> {userData.product}</p>
+          <p className=" text-sm font-light text-[#22c55e]"> {userData.product}</p>
         </div>
       </div>
 
       <div className="flex flex-col h-full gap-5 px-4 rounded-md md:px-0">
         <div className="flex flex-col">
           <h2 className="text-[24px] font-semibold ">Sign Out</h2>
-          <p className="text-[#63707f]">
+          <p className="text-[#63707f]  text-[14px]">
             Sign out of your account on this browser.
           </p>
         </div>

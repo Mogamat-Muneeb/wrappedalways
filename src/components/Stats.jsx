@@ -204,7 +204,7 @@ const Stats = (props) => {
             Playlists
           </div>
         </div>
-      <div className="w-full px-2 mt-10 max-h-[650px] overflow-x-auto   md:px-0">
+      <div className="w-full px-2 md:mt-10 mt-3 max-h-[650px] overflow-x-auto   md:px-0">
         <div className="flex flex-col gap-10 mt-10  max-w-[1220px]  mx-auto   ">
           {showing === "Top Genres" && (
             <>
