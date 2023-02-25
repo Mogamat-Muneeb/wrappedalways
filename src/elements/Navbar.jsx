@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { MdOutlineSegment } from "react-icons/md";
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
+import { HiDotsVertical } from "react-icons/hi";
 
 import { LogoIcon } from "../elements/Icons";
 export default function Navbar(props) {
@@ -131,16 +132,16 @@ export default function Navbar(props) {
       ) : null}
       {props.token ? (
         <>
-          <div className="sticky top-0 z-10 flex items-center h-16 px-3 bg-[white] shadow-2xl text-white md:hidden">
+          <div className="sticky top-0 z-10 flex items-center h-16 px-3 text-white bg-gray-100 md:hidden">
             <div className="flex items-center justify-between w-full ">
               <Link to="/" className="flex items-center justify-start w-full">
               <LogoIcon/>
               </Link>
               <div
                 className="flex items-center justify-end w-full"
-                onClick={handleClick}
+
               >
-                <MdOutlineSegment className="font-bold text-[25px]" />
+                <HiDotsVertical className="font-bold text-[25px]"                 onClick={handleClick} />
               </div>
             </div>
           </div>
@@ -151,25 +152,26 @@ export default function Navbar(props) {
                 : " -translate-y-full  transition-all duration-700 w-10 bg-white opacity-10"
             } fixed  z-50   m-2  right-0 w-32  top-0 rounded-md shadow-2xl `}
           >
-            <div className="flex items-center justify-between w-full h-16 px-2 ">
-              {/* <Link to="/" className="flex items-center justify-start w-full text-[#1DB954] "  onClick={handleClick}>  <LogoIcon/></Link> */}
-              <div
-                className="flex items-center justify-end w-full"
-                onClick={handleClick}
-              >
-                <RxCross2
-                  className="font-bold text-[25px]"
-                  onClick={handleClick}
-                />
-              </div>
-            </div>
+
             <div className="flex flex-col gap-4 p-2 ">
-              <Link to="/" className="font-semibold " onClick={handleClick}>
+              <div className="flex justify-end">
+              <MdOutlineKeyboardBackspace
+                    className="font-bold text-[25px]"
+                    onClick={handleClick}
+                  />
+              </div>
+              <Link to="/"
+                className={`font-semibold  ${
+                  location.pathname === "/" && "text-[#22c55e]"
+                }`}
+               onClick={handleClick}>
                 Stats
               </Link>
               <Link
                 to="account"
-                className="font-semibold "
+                className={`font-semibold  ${
+                  location.pathname === "/account" && "text-[#22c55e]"
+                }`}
                 onClick={handleClick}
               >
                 Account

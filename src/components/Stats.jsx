@@ -143,35 +143,35 @@ const Stats = (props) => {
 
   return (
     <div className="flex items-center justify-center h-full mt-10 ">
-        <div className="flex w-full  max-w-[1220px] mx-auto justify-between z-40  h-14 py-3 shadow-sm  fixed top-12 bg-white  items-center px-2 rounded-sm ">
-          <span
-            className={`cursor-pointer text-[20px] font-semibold bg-transparent ${showing === "Top Genres" && "font-bold text-[#22c55e]"}`}
+        <div className="flex w-full  max-w-[1220px] mx-auto justify-between z-40  h-14 shadow-sm  fixed md:top-12  top-20 bg-white  items-center px-2 rounded-md ">
+          <div
+            className={`cursor-pointer md:text-[20px] text-[16px] font-semibold bg-transparent flex items-center w-full h-14   ${showing === "Top Genres" && "font-bold text-[#22c55e] transition-all duration-150 "}`}
             onClick={() => setShowing("Top Genres")}
           >
            Top  Genres
-          </span>
-          <span
-            className={`cursor-pointer  text-[20px] font-semibold bg-transparent   ${
-              showing === "Top Artists" && "font-bold text-[#22c55e]"
+          </div>
+          <div
+            className={`cursor-pointer  md:text-[20px] text-[16px] font-semibold bg-transparent w-full  flex items-center  h-14 ${
+              showing === "Top Artists" && "font-bold text-[#22c55e] transition-all duration-150"
             }`}
             onClick={() => setShowing("Top Artists")}
           >
            Top  Artists
-          </span>
-          <span
-            className={`cursor-pointer  text-[20px] font-semibold bg-transparent ${showing === "Top Tracks" && "font-bold text-[#22c55e]"}`}
+          </div>
+          <div
+            className={`cursor-pointer  md:text-[20px] text-[16px] font-semibold bg-transparent w-full  flex items-center h-14 ${showing === "Top Tracks" && "font-bold text-[#22c55e] transition-all duration-150"}`}
             onClick={() => setShowing("Top Tracks")}
           >
             Top Tracks
-          </span>
-          <span
-            className={`cursor-pointer  text-[20px] font-semibold bg-transparent  ${
-              showing === "Top Playlists" && "font-bold text-[#22c55e]"
+          </div>
+          <div
+            className={`cursor-pointer  md:text-[20px] text-[16px] font-semibold bg-transparent w-full  flex items-center h-14 ${
+              showing === "Top Playlists" && "font-bold text-[#22c55e] transition-all duration-150"
             }`}
             onClick={() => setShowing("Top Playlists")}
           >
             Playlists
-          </span>
+          </div>
         </div>
       <div className="w-full px-2 mt-10 max-h-[650px] overflow-x-auto   md:px-0">
         <div className="flex flex-col gap-10 mt-10  max-w-[1220px]  mx-auto   ">

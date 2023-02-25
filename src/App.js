@@ -158,7 +158,7 @@ function App() {
                     </a>
                   </div>
                 ) : (
-                  <div className="flex flex-col gap-2 md:px-0 px-2  md:mt-32 mt-10 max-w-[1285px] mx-auto w-full">
+                  <div className="flex flex-col gap-2 md:px-0 px-2 h-full  md:mt-32 mt-10 max-w-[1285px] mx-auto w-full">
                     {/* <div className="font-bold text-[16px] flex gap-4">
                       <h1> Welcome, <span >{userData.display_name}!</span> </h1>
                     <Link to={"/account"} className="text-[#22c55e] relative cursor-pointer transition-all duration-300  before:absolute before:-bottom-[0.1px] before:left-0 before:w-0 before:h-[1.5px] before:rounded-full before:opacity-0 before:transition-all before:duration-300 before:bg-[#22c55e] hover:before:w-full hover:before:opacity-100"> Go to your account </Link>
