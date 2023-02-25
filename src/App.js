@@ -86,7 +86,7 @@ function App() {
   return (
     <>
     <div className="hidden w-full md:flex ">
-      <div className="sticky w-20 z-[60]">
+      <div className={` ${token && "sticky w-20 z-[60]"}`}>
       <Navbar token={token} logout={logout} />
       </div>
       <div className="w-full bg-gray-100 md:max-h-screen ">

@@ -239,10 +239,9 @@ const Stats = (props) => {
           {showing === "Top Tracks" && (
             <>
               <div id="Tracks">
-                {/* <h1 className="text-3xl font-extrabold ">Your Top Tracks</h1> */}
                 <div className="flex flex-col gap-2">
                   {tracks.length === 0 && (
-                    <div>you dont have any Top Songs yet</div>
+                    <div>You dont have any Top Tracks yet!</div>
                   )}
                   <div className="flex flex-col gap-6 pt-5">
                   {tracks.map((item, index) => {
@@ -250,19 +249,19 @@ const Stats = (props) => {
                     return (
                       <div key={item.id}>
                         <div className="flex flex-col gap-2 ">
-                          <h2>
-                            <span  className="text-[#9ca3af] pr-2"> {index + 1}</span>
-                            <span className="font-medium">{item.name}</span>
+                            <h2>
+                              <span  className="text-[#9ca3af] pr-2"> {index + 1}</span>
+                              <span className="font-medium">{item.name}</span>
                            </h2>
                           <div className="flex gap-2 pl-4 text-sm text-gray-200">
-                            {item.artists.map((value, index) => (
-                              <div key={value.id} className="">
-                                <p className="flex items-center gap-2">
-                                  <span> {index == 1 && "•"}</span>
-                                <span className="">{value.name}</span>
-                                </p>
-                              </div>
-                            ))}
+                              {item.artists.map((value, index) => (
+                                <div key={value.id} className="">
+                                  <p className="flex items-center gap-2">
+                                    <span> {index == 1 && "•"}</span>
+                                   <span className="">{value.name}</span>
+                                  </p>
+                                </div>
+                              ))}
                           </div>
                         </div>
                       </div>
@@ -308,7 +307,6 @@ const Stats = (props) => {
                             );
                           })}
                         </div>
-     
                       </div>
                     );
                   })}
