@@ -86,7 +86,7 @@ export default function Navbar(props) {
       ) : null}
       {props.token ? (
         <>
-          <div className="sticky top-0 z-10 flex items-center h-16 px-3 text-white bg-gray-100 md:hidden">
+          <div className="fixed top-0 left-0 right-0 z-10 flex items-center h-16 px-3 text-white bg-gray-100 md:hidden">
             <div className="flex items-center justify-between w-full ">
               <Link to="/" className="flex items-center justify-start w-full">
               <LogoIcon/>

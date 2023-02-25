@@ -43,7 +43,7 @@ const Stats = (props) => {
       .then((data) => setPlaylist(data));
   }, [props.token]);
 
-  // console.log("playlist inside ", playlist);
+  console.log("playlist inside ", playlist);
 
   // Get Current Top Genres long term
   useEffect(() => {
@@ -118,7 +118,7 @@ const Stats = (props) => {
       .then((data) => setArtist(data.items));
   }, [props.token]);
 
-  // console.log(artist, "artist");
+  console.log(artist, "artist");
 
   if (!userData || !artist || !album || !playlist || !tracks || !topGenres) {
     return (
@@ -143,7 +143,7 @@ const Stats = (props) => {
 
 
   return (
-    <div className="flex items-center justify-center h-full mt-10 ">
+    <div className="flex items-center justify-center h-full md:mt-10 mt-14 ">
         <div className="md:flex hidden w-full  max-w-[1220px] mx-auto justify-center md:gap-0 gap-2 z-40  h-14 shadow-sm  fixed md:top-12  top-24 bg-white items-center px-2 rounded-md ">
           <div
             className={`cursor-pointer md:text-[20px] text-[14px] font-semibold bg-transparent flex items-center w-full h-14   ${showing === "Top Genres" && "font-bold text-[#22c55e] transition-all duration-150 "}`}
@@ -204,7 +204,7 @@ const Stats = (props) => {
             Playlists
           </div>
         </div>
-      <div className="w-full px-2 md:mt-10 mt-3 max-h-[650px] overflow-x-auto   md:px-0">
+      <div className="w-full px-2 md:mt-10 mt-3 max-h-[700px] overflow-x-auto   md:px-0">
         <div className="flex flex-col gap-10 mt-10  max-w-[1220px]  mx-auto   ">
           {showing === "Top Genres" && (
             <>
@@ -241,13 +241,15 @@ const Stats = (props) => {
                 )}
                 <div className="flex flex-col gap-6 pt-5">
                 {artist?.map((item, index) => {
+                  console.log(item.images[2], "item yes ma§");
                   return (
                     <div key={item.id}>
-                        <h2>
-                          <span className="text-[#9ca3af] pr-2">{index + 1}</span>
-                          <span className="font-medium">{item.name}</span>
-                      </h2>
-                      <div className="flex flex-wrap items-center gap-1 pl-4">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[#9ca3af]">{index + 1}</span>
+                         <img src={item.images[2].url} alt="" className="relative w-10 h-10 bg-cover rounded shadow-xl" />
+                          <span className="font-medium ">{item.name}</span>
+                      </div>
+                      <div className="flex flex-wrap items-center gap-1 pt-2 pl-4">
                       {item?.genres.map((value, index) => {
                         return (
                           <div key={value.id} >
