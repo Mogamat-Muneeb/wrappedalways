@@ -48,17 +48,17 @@ export default function Navbar(props) {
       {props.token ? (
         <>
           <div
-            className={`text-white h-16  md:flex hidden items-center  fixed left-0 right-0 top-0 z-10 bg-[#f3f4f6] shadow-xl ${
+            className={`text-white h-screen md:flex hidden items-start justify-start flex-col gap-10 shadow-sm z-50 bg-white py-10 ${
               location.pathname === "/stats" && "shadow-none"
             }`}
           >
-            <div className="max-w-[1285px] mx-auto flex items-center w-full ">
-              <div className="flex items-center w-full ">
-                <Link to="/" className="flex items-center h-5 pt-3 ">
+            <div className="flex flex-col w-full gap-10 ">
+
+                <Link to="/" className="flex items-start justify-start ">
                   <LogoIcon/>
                 </Link>
-              </div>
-              <div className="flex items-center justify-end w-full gap-4 ">
+
+              <div className="flex flex-col gap-10 px-2 ">
                 <Link to="/" className={`font-semibold  ${location.pathname === "/" && "text-[#22c55e]"}`}>
                 Stats
               </Link>
@@ -70,11 +70,18 @@ export default function Navbar(props) {
                 >
                   Account
                 </Link>
+              </div>
+              <div className="fixed flex flex-col items-center px-2 bottom-10">
+              <img
+                    src={userData.images[0]?.url}
+                    alt="Profile"
+                    className="w-10 h-10 shadow border-white rounded-full border-[3px] bg-[url('https://i.postimg.cc/MGrqp8xj/Group-5.jpg)] "
+                  />
                 <button onClick={props.logout}>Logout</button>
               </div>
             </div>
           </div>
-          {location.pathname === "/stats" && (
+          {/* {location.pathname === "/stats" && (
             <div className="md:flex  hidden justify-between text-white w-full h-full pt-32 pb-20  bg-[#f3f4f6] shadow-xl items-center">
               <div className="max-w-[1285px] mx-auto flex justify-between w-full">
                 <div className="flex items-end w-full gap-10 ">
@@ -83,7 +90,7 @@ export default function Navbar(props) {
                     alt="Profile"
                     className="w-40 h-40 border-white rounded-full border-[3px] bg-[url('https://i.postimg.cc/MGrqp8xj/Group-5.jpg)] "
                   />
-                  {/* <img src="https://i.postimg.cc/MGrqp8xj/Group-5.jpg" alt="" /> */}
+                  <img src="https://i.postimg.cc/MGrqp8xj/Group-5.jpg" alt="" />
                   <p className="text-3xl font-extrabold bg-transparent">
                     {userData.display_name}
                   </p>
@@ -119,7 +126,7 @@ export default function Navbar(props) {
                 </div>
               </div>
             </div>
-          )}
+          )} */}
         </>
       ) : null}
       {props.token ? (

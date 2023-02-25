@@ -85,7 +85,54 @@ function App() {
 
   return (
     <>
+    <div className="hidden w-full md:flex ">
+      <div className="sticky w-20 z-[60]">
       <Navbar token={token} logout={logout} />
+      </div>
+      <div className="w-full bg-gray-100 md:max-h-screen ">
+      <Routes>
+        <Route
+          path="/"
+          element={
+
+              <div className="">
+                {!token ? (
+                  <div className="flex flex-col items-center justify-center w-full h-screen gap-3 px-2 text-center md:px-0">
+                    <p className="">
+                      <span className="text-2xl font-bold">
+                        See your Spotify Wrapped before the end of the year!!
+                      </span>
+                      <br />
+                      <span className="text-[16px] font-normal">
+                        Your top tracks, artists and genres all in one place.
+                      </span>
+                    </p>
+                    <a
+                      href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=playlist-read-collaborative%20playlist-read-private%20user-follow-read%20user-library-read%20user-read-currently-playing%20user-read-email%20user-read-playback-position%20user-read-playback-state%20user-read-private%20user-read-recently-played%20user-top-read`}
+                      className="bg-[#22c55e] py-3 px-4 rounded-3xl text-center text-white shadow-xl text-[16px] "
+                    >
+                      Login with Spotify
+                    </a>
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-2 md:px-0 px-2 max-w-[1285px] mx-auto w-full">
+                    {/* <div className="font-bold text-[16px] flex gap-4">
+                      <h1> Welcome, <span >{userData.display_name}!</span> </h1>
+                    <Link to={"/account"} className="text-[#22c55e] relative cursor-pointer transition-all duration-300  before:absolute before:-bottom-[0.1px] before:left-0 before:w-0 before:h-[1.5px] before:rounded-full before:opacity-0 before:transition-all before:duration-300 before:bg-[#22c55e] hover:before:w-full hover:before:opacity-100"> Go to your account </Link>
+                    </div> */}
+                    <Stats userData={userData} token={token}  /> 
+                  </div>
+                )}
+              </div>
+          }
+        />
+        <Route path="/account" element={token ? <Account token={token} logout={logout} /> : <Navigate to="/" />}  />
+        {/* <Route path="/stats" element={token ? <Stats userData={userData} token={token}  />  : <Navigate to="/" />} /> */}
+      </Routes>
+      </div>
+    </div>
+  <div className="md:hidden bock">
+  <Navbar token={token} logout={logout} />
       <Routes>
         <Route
           path="/"
@@ -112,10 +159,10 @@ function App() {
                   </div>
                 ) : (
                   <div className="flex flex-col gap-2 md:px-0 px-2  md:mt-32 mt-10 max-w-[1285px] mx-auto w-full">
-                    <div className="font-bold text-[16px] flex gap-4">
+                    {/* <div className="font-bold text-[16px] flex gap-4">
                       <h1> Welcome, <span >{userData.display_name}!</span> </h1>
                     <Link to={"/account"} className="text-[#22c55e] relative cursor-pointer transition-all duration-300  before:absolute before:-bottom-[0.1px] before:left-0 before:w-0 before:h-[1.5px] before:rounded-full before:opacity-0 before:transition-all before:duration-300 before:bg-[#22c55e] hover:before:w-full hover:before:opacity-100"> Go to your account </Link>
-                    </div>
+                    </div> */}
                     <Stats userData={userData} token={token}  /> 
                   </div>
                 )}
@@ -125,6 +172,8 @@ function App() {
         <Route path="/account" element={token ? <Account token={token} logout={logout} /> : <Navigate to="/" />}  />
         {/* <Route path="/stats" element={token ? <Stats userData={userData} token={token}  />  : <Navigate to="/" />} /> */}
       </Routes>
+  </div>
+
     </>
   );
 }

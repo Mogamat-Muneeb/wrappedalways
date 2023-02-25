@@ -142,17 +142,16 @@ const Stats = (props) => {
 
 
   return (
-    <div className="h-full ">
-      <div className="w-full px-2 pt-10 md:px-0">
-        <div className="flex w-full  max-w-[1285px] mx-auto justify-between ">
+    <div className="flex items-center justify-center h-full mt-10 ">
+        <div className="flex w-full  max-w-[1220px] mx-auto justify-between z-40  h-14 py-3 shadow-sm  fixed top-12 bg-white  items-center px-2 rounded-sm ">
           <span
-            className={`cursor-pointer  ${showing === "Top Genres" && "font-bold text-[#22c55e]"}`}
+            className={`cursor-pointer text-[20px] font-semibold bg-transparent ${showing === "Top Genres" && "font-bold text-[#22c55e]"}`}
             onClick={() => setShowing("Top Genres")}
           >
            Top  Genres
           </span>
           <span
-            className={`cursor-pointer  ${
+            className={`cursor-pointer  text-[20px] font-semibold bg-transparent   ${
               showing === "Top Artists" && "font-bold text-[#22c55e]"
             }`}
             onClick={() => setShowing("Top Artists")}
@@ -160,13 +159,13 @@ const Stats = (props) => {
            Top  Artists
           </span>
           <span
-            className={`cursor-pointer  ${showing === "Top Tracks" && "font-bold text-[#22c55e]"}`}
+            className={`cursor-pointer  text-[20px] font-semibold bg-transparent ${showing === "Top Tracks" && "font-bold text-[#22c55e]"}`}
             onClick={() => setShowing("Top Tracks")}
           >
             Top Tracks
           </span>
           <span
-            className={`cursor-pointer  ${
+            className={`cursor-pointer  text-[20px] font-semibold bg-transparent  ${
               showing === "Top Playlists" && "font-bold text-[#22c55e]"
             }`}
             onClick={() => setShowing("Top Playlists")}
@@ -174,18 +173,19 @@ const Stats = (props) => {
             Playlists
           </span>
         </div>
-        <div className="flex flex-col gap-10 mt-10 max-w-[1285px] mx-auto  ">
+      <div className="w-full px-2 mt-10 max-h-[650px] overflow-x-auto   md:px-0">
+        <div className="flex flex-col gap-10 mt-10  max-w-[1220px]  mx-auto   ">
           {showing === "Top Genres" && (
             <>
               <div id="Genres">
-                <h1 className="text-3xl font-extrabold">Your Top Genres</h1>
+                {/* <h1 className="text-3xl font-extrabold">Your Top Genres</h1> */}
                 {topGenres.length ? (
                   <div className="flex flex-col gap-3 pt-5">
                     {topGenres.map((item, index) => {
                       return (
                         <div key={item.id}>
                           <h2 className="flex">
-                            <span className="text-[#9ca3af] pr-2">{index + 1}.</span>
+                            <span className="text-[#9ca3af] mr-2">{index + 1}</span>
                             <span> {item}</span>
                           </h2>
                         </div>
@@ -204,7 +204,7 @@ const Stats = (props) => {
           {showing === "Top Artists" && (
             <>
               <div id="Artists">
-                <h1 className="text-3xl font-extrabold ">Your Top Artists</h1>
+                {/* <h1 className="text-3xl font-extrabold ">Your Top Artists</h1> */}
                 {artist.length === 0 && (
                   <div>you dont have any top artist yet</div>
                 )}
@@ -213,7 +213,7 @@ const Stats = (props) => {
                   return (
                     <div key={item.id}>
                         <h2>
-                          <span className="text-[#9ca3af] pr-2">{index + 1}.</span>
+                          <span className="text-[#9ca3af] pr-2">{index + 1}</span>
                           <span className="font-medium">{item.name}</span>
                       </h2>
                       <div className="flex flex-wrap items-center gap-1 pl-4">
@@ -239,7 +239,7 @@ const Stats = (props) => {
           {showing === "Top Tracks" && (
             <>
               <div id="Tracks">
-                <h1 className="text-3xl font-extrabold ">Your Top Tracks</h1>
+                {/* <h1 className="text-3xl font-extrabold ">Your Top Tracks</h1> */}
                 <div className="flex flex-col gap-2">
                   {tracks.length === 0 && (
                     <div>you dont have any Top Songs yet</div>
@@ -251,7 +251,7 @@ const Stats = (props) => {
                       <div key={item.id}>
                         <div className="flex flex-col gap-2 ">
                           <h2>
-                            <span  className="text-[#9ca3af] pr-2"> {index + 1}.</span>
+                            <span  className="text-[#9ca3af] pr-2"> {index + 1}</span>
                             <span className="font-medium">{item.name}</span>
                            </h2>
                           <div className="flex gap-2 pl-4 text-sm text-gray-200">
@@ -276,8 +276,8 @@ const Stats = (props) => {
 
           {showing === "Top Playlists" && (
             <>
-              <div id="Playlists" className="mb-10">
-                <h1 className="text-3xl font-extrabold ">Your Playlists</h1>
+              <div id="Playlists" className="pt-5 mb-10">
+                {/* <h1 className="text-3xl font-extrabold ">Your Playlists</h1> */}
                 <div>
                   {playlist.length === 0 && (
                     <div>you dont have any Playlists yet</div>
@@ -294,7 +294,7 @@ const Stats = (props) => {
                       <div key={item.id}>
                         <div className="pb-5 ">
                         <h2 className="pb-5">
-                            <span className="text-[#9ca3af] pr-2">{index + 1}. </span>
+                            <span className="text-[#9ca3af] pr-2">{index + 1} </span>
                             <span>{item.name}</span>
                         </h2>
                           {item?.images.map((value, index) => {
