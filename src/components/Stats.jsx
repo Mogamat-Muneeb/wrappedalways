@@ -45,10 +45,10 @@ const Stats = (props) => {
 
   // console.log("playlist inside ", playlist);
 
-  // Get Current Top Genres
+  // Get Current Top Genres long term
   useEffect(() => {
     fetch(
-      "https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=10",
+      "https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=10",
       {
         headers: {
           Authorization: `Bearer ${props.token}`,
@@ -76,11 +76,11 @@ const Stats = (props) => {
 
   // console.log("TOp genres", topGenres);
 
-  // Get Current Top Albums
+  // Get Current Top Albums long term
 
   useEffect(() => {
     fetch(
-      "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=11&offset=6",
+      "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=11&offset=6",
       {
         headers: {
           Authorization: `Bearer ${props.token}`,
@@ -104,9 +104,10 @@ const Stats = (props) => {
       .then((data) => setUserData(data));
   }, [props.token]);
 
+    // Get Current Top Artist long term
   useEffect(() => {
     fetch(
-      "https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=10&offset=5",
+      "https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=10&offset=5",
       {
         headers: {
           Authorization: `Bearer ${props.token}`,
@@ -143,7 +144,7 @@ const Stats = (props) => {
 
   return (
     <div className="flex items-center justify-center h-full mt-10 ">
-        <div className="flex w-full  max-w-[1220px] mx-auto justify-between z-40  h-14 shadow-sm  fixed md:top-12  top-20 bg-white  items-center px-2 rounded-md ">
+        <div className="flex w-full  max-w-[1220px] mx-auto justify-between z-40  h-14 shadow-sm  fixed md:top-12  top-24 bg-white items-center px-2 rounded-md ">
           <div
             className={`cursor-pointer md:text-[20px] text-[16px] font-semibold bg-transparent flex items-center w-full h-14   ${showing === "Top Genres" && "font-bold text-[#22c55e] transition-all duration-150 "}`}
             onClick={() => setShowing("Top Genres")}
@@ -186,7 +187,7 @@ const Stats = (props) => {
                         <div key={item.id}>
                           <h2 className="flex">
                             <span className="text-[#9ca3af] mr-2">{index + 1}</span>
-                            <span> {item}</span>
+                            <span className=""> {item}</span>
                           </h2>
                         </div>
                       );
@@ -221,8 +222,8 @@ const Stats = (props) => {
                         return (
                           <div key={value.id} >
                               <h2 className="flex items-center justify-center gap-2 ">
-                              <span>  {!index == 0  && value.length &&  "•"}</span>
-                                <span className="text-sm">{value}  </span>
+                              {/* <span>  {!index == 0  && value.length &&  "•"}</span> */}
+                                <span className=" font-light rounded px-2 py-0.5 mr-2 mt-1 text-gray-400 border border-gray-400 text-sm">{value}  </span>
                             </h2>
                           </div>
                         );
@@ -253,12 +254,12 @@ const Stats = (props) => {
                               <span  className="text-[#9ca3af] pr-2"> {index + 1}</span>
                               <span className="font-medium">{item.name}</span>
                            </h2>
-                          <div className="flex gap-2 pl-4 text-sm text-gray-200">
+                          <div className="flex flex-wrap gap-2 pl-2 text-sm text-gray-200">
                               {item.artists.map((value, index) => (
                                 <div key={value.id} className="">
-                                  <p className="flex items-center gap-2">
-                                    <span> {index == 1 && "•"}</span>
-                                   <span className="">{value.name}</span>
+                                  <p className="flex items-center justify-center gap-[5px]">
+                                    <span> {index > 0 && "•"}</span>
+                                   <span className="text-sm font-light">{value.name}</span>
                                   </p>
                                 </div>
                               ))}

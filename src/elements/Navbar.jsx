@@ -137,11 +137,15 @@ export default function Navbar(props) {
               <Link to="/" className="flex items-center justify-start w-full">
               <LogoIcon/>
               </Link>
+              <img
+                    src={userData.images[0]?.url}
+                    alt="Profile"
+                    className="w-10 h-10 shadow border-white rounded-full border-[3px] bg-[url('https://i.postimg.cc/MGrqp8xj/Group-5.jpg)] "
+                  />
               <div
                 className="flex items-center justify-end w-full"
-
               >
-                <HiDotsVertical className="font-bold text-[25px]"                 onClick={handleClick} />
+                <HiDotsVertical className="font-bold text-[25px]"   onClick={handleClick} />
               </div>
             </div>
           </div>

@@ -15,7 +15,8 @@ import { Redirect } from "react-router-dom";
 
 function App() {
   const CLIENT_ID = "c97efa103ad84e6fb815ec62e02fd446";
-  const REDIRECT_URI = "https://wrappedalways.vercel.app/";
+  // const REDIRECT_URI = "https://wrappedalways.vercel.app/";
+  const REDIRECT_URI = "http://localhost:3000/";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const [token, setToken] = useState("");
