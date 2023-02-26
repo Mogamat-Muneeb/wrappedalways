@@ -104,7 +104,7 @@ const Stats = (props) => {
       .then((data) => setUserData(data));
   }, [props.token]);
 
-    // Get Current Top Artist long term
+  // Get Current Top Artist long term
   useEffect(() => {
     fetch(
       "https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=10&offset=5",
@@ -141,69 +141,84 @@ const Stats = (props) => {
     );
   }
 
-
   return (
     <div className="flex items-center justify-center h-full md:mt-10 mt-14 ">
-        <div className="md:flex hidden w-full  max-w-[1220px] mx-auto justify-center md:gap-0 gap-2 z-40  h-14 shadow-sm  fixed md:top-12  top-24 bg-white items-center px-2 rounded-md ">
-          <div
-            className={`cursor-pointer md:text-[20px] text-[14px]  justify-center font-semibold bg-transparent flex items-center w-full h-14   ${showing === "Top Genres" && "font-bold text-[#22c55e] transition-all duration-150 "}`}
-            onClick={() => setShowing("Top Genres")}
-          >
-           Top  Genres
-          </div>
-          <div
-            className={`cursor-pointer  md:text-[20px] text-[14px] font-semibold justify-center bg-transparent w-full  flex items-center  h-14 ${
-              showing === "Top Artists" && "font-bold text-[#22c55e] transition-all duration-150"
-            }`}
-            onClick={() => setShowing("Top Artists")}
-          >
-           Top  Artists
-          </div>
-          <div
-            className={`cursor-pointer  md:text-[20px] text-[14px] font-semibold  justify-center bg-transparent w-full  flex items-center h-14 ${showing === "Top Tracks" && "font-bold text-[#22c55e] transition-all duration-150"}`}
-            onClick={() => setShowing("Top Tracks")}
-          >
-            Top Tracks
-          </div>
-          <div
-            className={`cursor-pointer  md:text-[20px] text-[14px] font-semibold  justify-center bg-transparent w-full  flex items-center h-14 ${
-              showing === "Top Playlists" && "font-bold text-[#22c55e] transition-all duration-150"
-            }`}
-            onClick={() => setShowing("Top Playlists")}
-          >
-            Playlists
-          </div>
+      <div className="md:flex hidden w-full  max-w-[1220px] mx-auto justify-center md:gap-0 gap-2 z-40  h-14 shadow-sm  fixed md:top-12  top-24 bg-white items-center px-2 rounded-md ">
+        <div
+          className={`cursor-pointer md:text-[20px] text-[14px]  justify-center font-semibold bg-transparent flex items-center w-full h-14   ${
+            showing === "Top Genres" &&
+            "font-bold text-[#22c55e] transition-all duration-150 "
+          }`}
+          onClick={() => setShowing("Top Genres")}
+        >
+          Top Genres
         </div>
-        <div className="fixed z-40 flex items-center justify-center w-full gap-2 px-1 bg-white rounded-sm shadow-sm md:hidden md:gap-0 h-14 md:top-12 top-24 ">
-          <div
-            className={`cursor-pointer  text-[14px] font-medium bg-transparent flex items-center justify-center w-full  h-14   ${showing === "Top Genres" && "font-bold text-[#22c55e] transition-all duration-150 "}`}
-            onClick={() => setShowing("Top Genres")}
-          >
-           Top  Genres
-          </div>
-          <div
-            className={`cursor-pointer  text-[14px]  font-medium bg-transparent   flex items-center  justify-center w-full h-14 ${
-              showing === "Top Artists" && "font-bold text-[#22c55e] transition-all duration-150"
-            }`}
-            onClick={() => setShowing("Top Artists")}
-          >
-           Top  Artists
-          </div>
-          <div
-            className={`cursor-pointer   text-[14px]  font-medium bg-transparent  flex items-center justify-center w-full h-14 ${showing === "Top Tracks" && "font-bold text-[#22c55e] transition-all duration-150"}`}
-            onClick={() => setShowing("Top Tracks")}
-          >
-            Top Tracks
-          </div>
-          <div
-            className={`cursor-pointer   text-[14px]  font-medium bg-transparent   flex items-center  justify-center w-full h-14 ${
-              showing === "Top Playlists" && "font-bold text-[#22c55e] transition-all duration-150"
-            }`}
-            onClick={() => setShowing("Top Playlists")}
-          >
-            Playlists
-          </div>
+        <div
+          className={`cursor-pointer  md:text-[20px] text-[14px] font-semibold justify-center bg-transparent w-full  flex items-center  h-14 ${
+            showing === "Top Artists" &&
+            "font-bold text-[#22c55e] transition-all duration-150"
+          }`}
+          onClick={() => setShowing("Top Artists")}
+        >
+          Top Artists
         </div>
+        <div
+          className={`cursor-pointer  md:text-[20px] text-[14px] font-semibold  justify-center bg-transparent w-full  flex items-center h-14 ${
+            showing === "Top Tracks" &&
+            "font-bold text-[#22c55e] transition-all duration-150"
+          }`}
+          onClick={() => setShowing("Top Tracks")}
+        >
+          Top Tracks
+        </div>
+        <div
+          className={`cursor-pointer  md:text-[20px] text-[14px] font-semibold  justify-center bg-transparent w-full  flex items-center h-14 ${
+            showing === "Top Playlists" &&
+            "font-bold text-[#22c55e] transition-all duration-150"
+          }`}
+          onClick={() => setShowing("Top Playlists")}
+        >
+          Playlists
+        </div>
+      </div>
+      <div className="fixed z-40 flex items-center justify-center w-full gap-2 px-1 bg-white rounded-sm shadow-sm md:hidden md:gap-0 h-14 md:top-12 top-24 ">
+        <div
+          className={`cursor-pointer  text-[14px] font-medium bg-transparent flex items-center justify-center w-full  h-14   ${
+            showing === "Top Genres" &&
+            "font-bold text-[#22c55e] transition-all duration-150 "
+          }`}
+          onClick={() => setShowing("Top Genres")}
+        >
+          Top Genres
+        </div>
+        <div
+          className={`cursor-pointer  text-[14px]  font-medium bg-transparent   flex items-center  justify-center w-full h-14 ${
+            showing === "Top Artists" &&
+            "font-bold text-[#22c55e] transition-all duration-150"
+          }`}
+          onClick={() => setShowing("Top Artists")}
+        >
+          Top Artists
+        </div>
+        <div
+          className={`cursor-pointer   text-[14px]  font-medium bg-transparent  flex items-center justify-center w-full h-14 ${
+            showing === "Top Tracks" &&
+            "font-bold text-[#22c55e] transition-all duration-150"
+          }`}
+          onClick={() => setShowing("Top Tracks")}
+        >
+          Top Tracks
+        </div>
+        <div
+          className={`cursor-pointer   text-[14px]  font-medium bg-transparent   flex items-center  justify-center w-full h-14 ${
+            showing === "Top Playlists" &&
+            "font-bold text-[#22c55e] transition-all duration-150"
+          }`}
+          onClick={() => setShowing("Top Playlists")}
+        >
+          Playlists
+        </div>
+      </div>
       <div className="w-full px-2 md:mt-10 mt-3 max-h-[700px] overflow-x-auto   md:px-0">
         <div className="flex flex-col gap-10 mt-10  max-w-[1220px]  mx-auto   ">
           {showing === "Top Genres" && (
@@ -216,7 +231,9 @@ const Stats = (props) => {
                       return (
                         <div key={item.id} className="py-4 ">
                           <h2 className="flex">
-                            <span className="text-[#9ca3af] mr-2">{index + 1}</span>
+                            <span className="text-[#9ca3af] mr-2">
+                              {index + 1}
+                            </span>
                             <span className=""> {item}</span>
                           </h2>
                         </div>
@@ -240,29 +257,35 @@ const Stats = (props) => {
                   <div>you dont have any top artist yet</div>
                 )}
                 <div className="flex flex-col gap-6 pt-5">
-                {artist?.map((item, index) => {
-                  return (
-                    <div key={item.id}>
+                  {artist?.map((item, index) => {
+                    return (
+                      <div key={item.id}>
                         <div className="flex items-center gap-2">
                           <span className="text-[#9ca3af]">{index + 1}</span>
-                         <img src={item.images[2].url} alt="" className="relative w-10 h-10 bg-cover rounded shadow-xl" />
+                          <img
+                            src={item.images[2].url}
+                            alt=""
+                            className="relative w-10 h-10 bg-cover rounded shadow-xl"
+                          />
                           <span className="font-medium ">{item.name}</span>
+                        </div>
+                        <div className="flex flex-wrap items-center gap-1 pt-2 pl-4">
+                          {item?.genres.map((value, index) => {
+                            return (
+                              <div key={value.id}>
+                                <h2 className="flex items-center justify-center gap-2 ">
+                                  {/* <span>  {!index == 0  && value.length &&  "•"}</span> */}
+                                  <span className=" font-light rounded px-2 py-0.5 mr-2 mt-1 text-gray-400 border border-gray-400 text-sm">
+                                    {value}{" "}
+                                  </span>
+                                </h2>
+                              </div>
+                            );
+                          })}
+                        </div>
                       </div>
-                      <div className="flex flex-wrap items-center gap-1 pt-2 pl-4">
-                      {item?.genres.map((value, index) => {
-                        return (
-                          <div key={value.id} >
-                              <h2 className="flex items-center justify-center gap-2 ">
-                              {/* <span>  {!index == 0  && value.length &&  "•"}</span> */}
-                                <span className=" font-light rounded px-2 py-0.5 mr-2 mt-1 text-gray-400 border border-gray-400 text-sm">{value}  </span>
-                            </h2>
-                          </div>
-                        );
-                      })}
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
                 </div>
               </div>
             </>
@@ -276,29 +299,45 @@ const Stats = (props) => {
                     <div>You dont have any Top Tracks yet!</div>
                   )}
                   <div className="flex flex-col gap-6 pt-5">
-                  {tracks.map((item, index) => {
-
-                    return (
-                      <div key={item.id}>
-                        <div className="flex flex-col gap-2 ">
-                            <h2>
-                              <span  className="text-[#9ca3af] pr-2"> {index + 1}</span>
-                              <span className="font-medium">{item.name}</span>
-                           </h2>
-                          <div className="flex flex-wrap gap-2 pl-2 text-sm text-gray-200">
-                              {item.artists.map((value, index) => (
-                                <div key={value.id} className="">
-                                  <p className="flex items-center justify-center gap-[5px]">
-                                    <span> {index > 0 && "•"}</span>
-                                   <span className="text-sm font-light">{value.name}</span>
-                                  </p>
+                    {tracks.map((item, index) => {
+                      console.log(item.album.images[2], " the tracks");
+                      return (
+                        <div key={item.id}>
+                          <div className="flex ">
+                            <div>
+                              <span className="text-[#9ca3af] pr-2">
+                                {" "}
+                                {index + 1}
+                              </span>
+                            </div>
+                            <div className="flex gap-3 ">
+                              <img
+                                src={item.album.images[1].url}
+                                alt=""
+                                className="relative w-10 h-10 bg-cover rounded shadow-xl"
+                              />
+                              <h2>
+                                <span className="font-medium">{item.name}</span>
+                                <div className="flex flex-col gap-2 ">
+                                  <div className="flex flex-wrap gap-[5px] text-sm text-gray-200 ">
+                                    {item.artists.map((value, index) => (
+                                      <div key={value.id} className="">
+                                        <p className="flex items-center justify-center gap-[5px]">
+                                          <span> {index > 0 && "•"}</span>
+                                          <span className="text-sm font-light text-gray-400">
+                                            {value.name}
+                                          </span>
+                                        </p>
+                                      </div>
+                                    ))}
+                                  </div>
                                 </div>
-                              ))}
+                              </h2>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -320,34 +359,38 @@ const Stats = (props) => {
                       : `${playlist.total} playlist`}
                   </span>
                   <div className="flex flex-wrap grid-cols-5 gap-4 pt-10 md:grid">
-                  {playlist.items?.map((item, index) => {
-                    return (
-                      <div key={item.id}>
-                        <div className="pb-5 ">
-                        <h2 className="pb-5">
-                            <span className="text-[#9ca3af] pr-2">{index + 1} </span>
-                            <span>{item.name}</span>
-                        </h2>
-                          {item?.images.map((value, index) => {
-
-                            return (
-                              <div key={value.id}>
-                                <div className="">
-                                <img src={value.url}  className="relative w-56 h-56 bg-cover rounded shadow-xl" alt="" />
+                    {playlist.items?.map((item, index) => {
+                      return (
+                        <div key={item.id}>
+                          <div className="pb-5 ">
+                            <h2 className="pb-5">
+                              <span className="text-[#9ca3af] pr-2">
+                                {index + 1}{" "}
+                              </span>
+                              <span>{item.name}</span>
+                            </h2>
+                            {item?.images.map((value, index) => {
+                              return (
+                                <div key={value.id}>
+                                  <div className="">
+                                    <img
+                                      src={value.url}
+                                      className="relative w-56 h-56 bg-cover rounded shadow-xl"
+                                      alt=""
+                                    />
+                                  </div>
                                 </div>
-                              </div>
-                            );
-                          })}
+                              );
+                            })}
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
                   </div>
                 </div>
               </div>
             </>
           )}
-
         </div>
       </div>
     </div>
