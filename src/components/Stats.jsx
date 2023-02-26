@@ -306,7 +306,6 @@ const Stats = (props) => {
                           <div className="flex ">
                             <div>
                               <span className="text-[#9ca3af] pr-2">
-                                {" "}
                                 {index + 1}
                               </span>
                             </div>
