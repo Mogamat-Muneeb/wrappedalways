@@ -318,12 +318,12 @@ const Stats = (props) => {
                               />
                               <h2>
                                 <span className="font-medium">{item.name}</span>
-                                <div className="flex flex-col gap-2 ">
-                                  <div className="flex flex-wrap gap-[5px] text-sm text-gray-200 ">
+                                <div className="flex flex-col ">
+                                  <div className="flex flex-wrap gap-2 text-sm text-gray-200 ">
                                     {item.artists.map((value, index) => (
                                       <div key={value.id} className="">
-                                        <p className="flex items-center justify-center gap-[5px]">
-                                          <span> {index > 0 && "•"}</span>
+                                        <p className="flex items-center ">
+                                          <span className={`${index > 0 && "px-1"}`}> {index > 0 && "•"}</span>
                                           <span className="text-sm font-light text-gray-400">
                                             {value.name}
                                           </span>
