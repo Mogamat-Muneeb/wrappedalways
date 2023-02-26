@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {
     const hash = window.location.hash;
-    let token = window.localStorage.getItem("token");
+    let token = window.sessionStorage.getItem("token");
 
     if (!token && hash) {
       token = hash
@@ -34,7 +34,7 @@ function App() {
         .split("=")[1];
 
       window.location.hash = "";
-      window.localStorage.setItem("token", token);
+      window.sessionStorage.setItem("token", token);
     }
 
     setToken(token);
@@ -42,7 +42,7 @@ function App() {
 
   const logout = () => {
     setToken("");
-    window.localStorage.removeItem("token");
+    window.sessionStorage.removeItem("token");
   };
 
   const [userData, setUserData] = useState(null);
