@@ -174,7 +174,7 @@ const Stats = (props) => {
             Playlists
           </div>
         </div>
-        <div className="fixed z-40 flex items-center justify-center w-full gap-2 px-1 rounded-sm shadow-sm bg-whitemd:hidden md:gap-0 h-14 md:top-12 top-24 ">
+        <div className="fixed z-40 flex items-center justify-center w-full gap-2 px-1 bg-white rounded-sm shadow-sm md:hidden md:gap-0 h-14 md:top-12 top-24 ">
           <div
             className={`cursor-pointer  text-[14px] font-medium bg-transparent flex items-center justify-center w-full  h-14   ${showing === "Top Genres" && "font-bold text-[#22c55e] transition-all duration-150 "}`}
             onClick={() => setShowing("Top Genres")}
