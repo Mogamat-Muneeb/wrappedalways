@@ -36,7 +36,7 @@ export default function Account(props) {
   }
 
   return (
-    <div className="md:pt-10 pt-16 items-left justify-center text-[#1c1c1c] z-50  max-w-[1220px] mx-auto w-full  gap-5  flex flex-col h-screen   ">
+    <div className="md:pt-10 pt-16 items-left justify-center text-[#1c1c1c] z-50  max-w-[1220px] mx-auto w-full   flex flex-col h-screen   ">
       <div className="flex flex-col items-start justify-center w-full h-full px-4 rounded-md md:px-0 ">
         <div className="flex flex-col">
           <h1 className="text-4xl font-extrabold ">Spotify Account</h1>
