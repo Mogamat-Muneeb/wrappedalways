@@ -219,7 +219,7 @@ const Stats = (props) => {
           Playlists
         </div>
       </div>
-      <div className="w-full px-2 md:mt-10 mt-3 max-h-[700px] overflow-x-auto   md:px-0">
+      <div className="w-full px-2 md:mt-10 mt-3 max-h-[750px] overflow-x-auto   md:px-0">
         <div className="flex flex-col gap-10 mt-10  max-w-[1220px]  mx-auto   ">
           {showing === "Top Genres" && (
             <>
@@ -351,12 +351,14 @@ const Stats = (props) => {
                   {playlist.length === 0 && (
                     <div>you dont have any Playlists yet</div>
                   )}
-                  <span>
-                    You have{" "}
+                  <h2 className="text-[16px] font-semibold flex gap-1">
+                    You  currently have
+                    <span className="text-[#22c55e]">
                     {playlist.total > 1
                       ? `${playlist.total} playlists`
                       : `${playlist.total} playlist`}
-                  </span>
+                    </span>
+                  </h2>
                   <div className="flex flex-wrap grid-cols-5 gap-4 pt-10 md:grid">
                     {playlist.items?.map((item, index) => {
                       return (
@@ -364,9 +366,9 @@ const Stats = (props) => {
                           <div className="pb-5 ">
                             <h2 className="pb-5">
                               <span className="text-[#9ca3af] pr-2">
-                                {index + 1}{" "}
+                                {index + 1}
                               </span>
-                              <span>{item.name}</span>
+                              <span className="text-[16px] font-semibold">{item.name}</span>
                             </h2>
                             {item?.images.map((value, index) => {
                               return (
