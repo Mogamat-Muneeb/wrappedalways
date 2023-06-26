@@ -1,26 +1,12 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-  Link,
-} from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Stats from "./components/Stats";
 import Account from "./components/Account";
-import Landing from "./components/Landing";
 import Navbar from "./elements/Navbar";
 import { useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
 import { LoadingSpinner } from "./elements/Icons";
 
 function App() {
-  const CLIENT_ID = "c97efa103ad84e6fb815ec62e02fd446";
-  const REDIRECT_URI = "https://wrappedalways.vercel.app/";
-  //   const REDIRECT_URI = "http://localhost:3000/";
-  const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
-  const RESPONSE_TYPE = "token";
   const [token, setToken] = useState("");
-  // console.log(token)
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -91,7 +77,7 @@ function App() {
                         </span>
                       </p>
                       <a
-                        href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=playlist-read-collaborative%20playlist-read-private%20user-follow-read%20user-library-read%20user-read-currently-playing%20user-read-email%20user-read-playback-position%20user-read-playback-state%20user-read-private%20user-read-recently-played%20user-top-read`}
+                        href={`${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=playlist-read-collaborative%20playlist-read-private%20user-follow-read%20user-library-read%20user-read-currently-playing%20user-read-email%20user-read-playback-position%20user-read-playback-state%20user-read-private%20user-read-recently-played%20user-top-read`}
                         className="bg-[#22c55e] py-3 px-4 rounded-3xl text-center text-white shadow-xl text-[16px] "
                       >
                         Login with Spotify
@@ -99,10 +85,6 @@ function App() {
                     </div>
                   ) : (
                     <div className="flex flex-col gap-2 md:px-0 px-2 max-w-[1285px] mx-auto w-full">
-                      {/* <div className="font-bold text-[16px] flex gap-4">
-                      <h1> Welcome, <span >{userData.display_name}!</span> </h1>
-                    <Link to={"/account"} className="text-[#22c55e] relative cursor-pointer transition-all duration-300  before:absolute before:-bottom-[0.1px] before:left-0 before:w-0 before:h-[1.5px] before:rounded-full before:opacity-0 before:transition-all before:duration-300 before:bg-[#22c55e] hover:before:w-full hover:before:opacity-100"> Go to your account </Link>
-                    </div> */}
                       <Stats userData={userData} token={token} />
                     </div>
                   )}
@@ -119,7 +101,6 @@ function App() {
                 )
               }
             />
-            {/* <Route path="/stats" element={token ? <Stats userData={userData} token={token}  />  : <Navigate to="/" />} /> */}
           </Routes>
         </div>
       </div>
@@ -142,7 +123,7 @@ function App() {
                       </span>
                     </p>
                     <a
-                      href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=playlist-read-collaborative%20playlist-read-private%20user-follow-read%20user-library-read%20user-read-currently-playing%20user-read-email%20user-read-playback-position%20user-read-playback-state%20user-read-private%20user-read-recently-played%20user-top-read`}
+                      href={`${process.env.REACT_APP_AUTH_ENDPOINT}?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=${process.env.REACT_APP_RESPONSE_TYPE}&scope=playlist-read-collaborative%20playlist-read-private%20user-follow-read%20user-library-read%20user-read-currently-playing%20user-read-email%20user-read-playback-position%20user-read-playback-state%20user-read-private%20user-read-recently-played%20user-top-read`}
                       className="bg-[#22c55e] py-3 px-4 rounded-3xl text-center text-white shadow-xl text-[16px] "
                     >
                       Login with Spotify
@@ -150,10 +131,6 @@ function App() {
                   </div>
                 ) : (
                   <div className="flex flex-col gap-2 md:px-0 px-2 h-full  md:mt-32 mt-10 max-w-[1285px] mx-auto w-full">
-                    {/* <div className="font-bold text-[16px] flex gap-4">
-                      <h1> Welcome, <span >{userData.display_name}!</span> </h1>
-                    <Link to={"/account"} className="text-[#22c55e] relative cursor-pointer transition-all duration-300  before:absolute before:-bottom-[0.1px] before:left-0 before:w-0 before:h-[1.5px] before:rounded-full before:opacity-0 before:transition-all before:duration-300 before:bg-[#22c55e] hover:before:w-full hover:before:opacity-100"> Go to your account </Link>
-                    </div> */}
                     <Stats userData={userData} token={token} />
                   </div>
                 )}
@@ -170,7 +147,6 @@ function App() {
               )
             }
           />
-          {/* <Route path="/stats" element={token ? <Stats userData={userData} token={token}  />  : <Navigate to="/" />} /> */}
         </Routes>
       </div>
     </>

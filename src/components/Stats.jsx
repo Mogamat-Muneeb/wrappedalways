@@ -1,135 +1,10 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { LoadingSpinner } from "../elements/Icons";
+import React, { useState } from "react";
+import Genres from "./genres";
+import Artists from "./artists";
+import Tracks from "./tracks";
+import Playlists from "./playlists";
 const Stats = (props) => {
-  const [tracks, setTracks] = useState([]);
-  const [playlist, setPlaylist] = useState([]);
-  const [topGenres, setTopGenres] = useState([]);
-  const [album, setAlbums] = useState([]);
-  const [userData, setUserData] = useState(null);
-  const [artist, setArtist] = useState(null);
   const [showing, setShowing] = useState("Top Genres");
-
-  // Get User’s Top Items
-  useEffect(() => {
-    fetch(
-      "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=11&offset=6",
-      {
-        headers: {
-          Authorization: `Bearer ${props.token}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        // Sort tracks by popularity score in descending order
-        const sortedTracks = data.items.sort(
-          (a, b) => b.popularity - a.popularity
-        );
-        setTracks(sortedTracks);
-      });
-  }, [props.token]);
-
-  // console.log("tracks inside ", tracks);
-
-  // Get Current User’s Playlists
-  useEffect(() => {
-    fetch("https://api.spotify.com/v1/me/playlists?limit=10&offset=0", {
-      headers: {
-        Authorization: `Bearer  ${props.token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setPlaylist(data));
-  }, [props.token]);
-
-  // console.log("playlist inside ", playlist);
-
-  // Get Current Top Genres long term
-  useEffect(() => {
-    fetch(
-      "https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=10",
-      {
-        headers: {
-          Authorization: `Bearer ${props.token}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const genres = data.items.flatMap((artist) => artist.genres);
-        const genreCounts = genres.reduce((acc, genre) => {
-          if (!acc[genre]) {
-            acc[genre] = 1;
-          } else {
-            acc[genre]++;
-          }
-          return acc;
-        }, {});
-        const topGenres = Object.entries(genreCounts)
-          .sort((a, b) => b[1] - a[1])
-          .slice(0, 5)
-          .map((entry) => entry[0]);
-        setTopGenres(topGenres);
-      });
-  }, [props.token]);
-
-  // console.log("TOp genres", topGenres);
-
-  // Get Current Top Albums long term
-
-  useEffect(() => {
-    fetch(
-      "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=11&offset=6",
-      {
-        headers: {
-          Authorization: `Bearer ${props.token}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setAlbums(data.items);
-      });
-  }, [props.token]);
-
-  // console.log("albums", album);
-  useEffect(() => {
-    fetch("https://api.spotify.com/v1/me", {
-      headers: {
-        Authorization: `Bearer ${props.token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setUserData(data));
-  }, [props.token]);
-
-  // Get Current Top Artist long term
-  useEffect(() => {
-    fetch(
-      "https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=10&offset=5",
-      {
-        headers: {
-          Authorization: `Bearer ${props.token}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => setArtist(data.items));
-  }, [props.token]);
-
-  // console.log(artist, "artist");
-
-  if (!userData || !artist || !album || !playlist || !tracks || !topGenres) {
-    return (
-      <div className="flex items-center justify-center h-screen ">
-        <div className="flex space-x-2">
-          <LoadingSpinner />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="flex items-center justify-center h-full md:mt-10 mt-14 ">
@@ -214,27 +89,7 @@ const Stats = (props) => {
           {showing === "Top Genres" && (
             <>
               <div id="Genres">
-                {/* <h1 className="text-3xl font-extrabold">Your Top Genres</h1> */}
-                {topGenres.length ? (
-                  <div className="flex flex-col gap-3 pt-5 ">
-                    {topGenres.map((item, index) => {
-                      return (
-                        <div key={item.id} className="py-4 ">
-                          <h2 className="flex">
-                            <span className="text-[#9ca3af] mr-2">
-                              {index + 1}
-                            </span>
-                            <span className=""> {item}</span>
-                          </h2>
-                        </div>
-                      );
-                    })}
-                  </div>
-                ) : (
-                  <div className="pt-5">
-                    You do not have any Top Genres at the moment !!
-                  </div>
-                )}
+                <Genres token={props.token} />
               </div>
             </>
           )}
@@ -242,41 +97,7 @@ const Stats = (props) => {
           {showing === "Top Artists" && (
             <>
               <div id="Artists">
-                {/* <h1 className="text-3xl font-extrabold ">Your Top Artists</h1> */}
-                {artist.length === 0 && (
-                  <div>you dont have any top artist yet</div>
-                )}
-                <div className="flex flex-col gap-6 pt-5">
-                  {artist?.map((item, index) => {
-                    return (
-                      <div key={item.id}>
-                        <div className="flex items-center gap-2">
-                          <span className="text-[#9ca3af]">{index + 1}</span>
-                          <img
-                            src={item.images[2].url}
-                            alt=""
-                            className="relative w-10 h-10 bg-cover rounded shadow-xl"
-                          />
-                          <span className="font-medium ">{item.name}</span>
-                        </div>
-                        <div className="flex flex-wrap items-center gap-1 pt-2 pl-4">
-                          {item?.genres.map((value, index) => {
-                            return (
-                              <div key={value.id}>
-                                <h2 className="flex items-center justify-center gap-2 ">
-                                  {/* <span>  {!index == 0  && value.length &&  "•"}</span> */}
-                                  <span className=" font-light rounded px-2 py-0.5 mr-2 mt-1 text-gray-400 border border-gray-400 text-sm">
-                                    {value}{" "}
-                                  </span>
-                                </h2>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                <Artists token={props.token} />
               </div>
             </>
           )}
@@ -284,56 +105,7 @@ const Stats = (props) => {
           {showing === "Top Tracks" && (
             <>
               <div id="Tracks">
-                <div className="flex flex-col gap-2">
-                  {tracks.length === 0 && (
-                    <div>You dont have any Top Tracks yet!</div>
-                  )}
-                  <div className="flex flex-col gap-6 pt-5">
-                    {tracks.map((item, index) => {
-                      console.log(item.album.images[2], " the tracks");
-                      return (
-                        <div key={item.id}>
-                          <div className="flex ">
-                            <div>
-                              <span className="text-[#9ca3af] pr-2">
-                                {index + 1}
-                              </span>
-                            </div>
-                            <div className="flex gap-3 ">
-                              <img
-                                src={item.album.images[1].url}
-                                alt=""
-                                className="relative w-10 h-10 bg-cover rounded shadow-xl"
-                              />
-                              <h2>
-                                <span className="font-medium">{item.name}</span>
-                                <div className="flex flex-col ">
-                                  <div className="flex flex-wrap gap-2 text-sm text-gray-200 ">
-                                    {item.artists.map((value, index) => (
-                                      <div key={value.id} className="">
-                                        <p className="flex items-center ">
-                                          <span
-                                            className={`${index > 0 && "px-1"}`}
-                                          >
-                                            {" "}
-                                            {index > 0 && "•"}
-                                          </span>
-                                          <span className="text-sm font-light text-gray-400">
-                                            {value.name}
-                                          </span>
-                                        </p>
-                                      </div>
-                                    ))}
-                                  </div>
-                                </div>
-                              </h2>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
+                <Tracks token={props.token} />
               </div>
             </>
           )}
@@ -341,51 +113,7 @@ const Stats = (props) => {
           {showing === "Top Playlists" && (
             <>
               <div id="Playlists" className="pt-5 mb-10">
-                {/* <h1 className="text-3xl font-extrabold ">Your Playlists</h1> */}
-                <div>
-                  {playlist.length === 0 && (
-                    <div>you dont have any Playlists yet</div>
-                  )}
-                  <h2 className="text-[16px] font-semibold flex gap-1">
-                    You currently have
-                    <span className="text-[#22c55e]">
-                      {playlist.total > 1
-                        ? `${playlist.total} playlists`
-                        : `${playlist.total} playlist`}
-                    </span>
-                  </h2>
-                  <div className="flex flex-wrap grid-cols-5 gap-4 pt-10 md:grid">
-                    {playlist.items?.map((item, index) => {
-                      return (
-                        <div key={item.id}>
-                          <div className="pb-5 ">
-                            <h2 className="pb-5">
-                              <span className="text-[#9ca3af] pr-2">
-                                {index + 1}
-                              </span>
-                              <span className="text-[16px] font-semibold">
-                                {item.name}
-                              </span>
-                            </h2>
-                            {item?.images.map((value, index) => {
-                              return (
-                                <div key={value.id}>
-                                  <div className="">
-                                    <img
-                                      src={value.url}
-                                      className="relative w-56 h-56 bg-cover rounded shadow-xl"
-                                      alt=""
-                                    />
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
+                <Playlists token={props.token} />
               </div>
             </>
           )}

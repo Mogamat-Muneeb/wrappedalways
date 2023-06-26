@@ -4,7 +4,6 @@ import { LoadingSpinner } from "../elements/Icons";
 
 export default function Account(props) {
   const [userData, setUserData] = useState(null);
-  // console.log(userData);
   useEffect(() => {
     fetch("https://api.spotify.com/v1/me", {
       headers: {
