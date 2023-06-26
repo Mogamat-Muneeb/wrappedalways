@@ -9,6 +9,7 @@ const Playlists = (props) => {
       headers: {
         Authorization: `Bearer  ${props.token}`,
       },
+      
     })
       .then((response) => response.json())
       .then((data) => setPlaylist(data));
