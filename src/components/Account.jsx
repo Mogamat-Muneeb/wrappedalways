@@ -26,14 +26,14 @@ export default function Account(props) {
 
   return (
     <div className="md:pt-10 pt-16 items-left justify-center text-[#1c1c1c] z-50  max-w-[1220px] mx-auto w-full   flex flex-col h-screen   ">
-      <div className="flex flex-col items-start justify-center w-full h-full px-4 rounded-md md:px-0 ">
+      <div className="flex flex-col items-start justify-center w-full h-full px-4 rounded-md md:items-center md:px-0 ">
         <div className="flex flex-col">
           <h1 className="text-4xl font-extrabold ">Spotify Account</h1>
           <p className="font-normal  text-[14px] text-[#63707f] ">
             The Spotify account that you're signed in with.
           </p>
         </div>
-        <div className="flex flex-col pt-5 ">
+        <div className="flex flex-col items-start justify-center w-full pt-5 md:items-center">
           <h2 className="text-[24px] font-semibold ">Username</h2>
           <Link
             target="_blank"
@@ -45,8 +45,8 @@ export default function Account(props) {
         </div>
       </div>
 
-      <div className="flex flex-col h-full gap-5 px-4 rounded-md md:px-0 ">
-        <div className="flex flex-col">
+      <div className="flex flex-col items-start justify-center w-full h-full gap-5 px-4 rounded-md md:items-center md:px-0">
+        <div className="flex flex-col items-start justify-center w-full md:items-center">
           <h2 className="text-[24px] font-semibold ">Email</h2>
           <p className="text-[#63707f] text-[14px]">
             The email address associated with your account.
@@ -57,8 +57,8 @@ export default function Account(props) {
         </div>
       </div>
 
-      <div className="flex flex-col h-full gap-5 px-4 rounded-md md:px-0">
-        <div className="flex flex-col">
+      <div className="flex flex-col items-start justify-center w-full h-full gap-5 px-4 rounded-md md:items-center md:px-0">
+        <div className="flex flex-col items-start justify-center w-full md:items-center">
           <h2 className="text-[24px] font-extrabold ">Display Name</h2>
           <p className="text-[#63707f]  text-[14px]">
             The name you are using on spotify.
@@ -66,14 +66,13 @@ export default function Account(props) {
         </div>
         <div>
           <p className="text-[#22c55e] text-sm font-light">
-            {" "}
             {userData.display_name}
           </p>
         </div>
       </div>
 
-      <div className="flex flex-col h-full gap-5 px-4 rounded-md md:px-0">
-        <div className="flex flex-col">
+      <div className="flex flex-col items-start justify-center w-full h-full gap-5 px-4 rounded-md md:items-center md:px-0">
+        <div className="flex flex-col items-start justify-center w-full md:items-center">
           <h2 className="text-[24px] font-semibold ">Plan</h2>
           <p className="text-[#63707f]  text-[14px]">
             Your spotify plan at the current moment
@@ -81,14 +80,13 @@ export default function Account(props) {
         </div>
         <div>
           <p className=" text-sm font-light text-[#22c55e]">
-            {" "}
             {userData.product}
           </p>
         </div>
       </div>
 
-      <div className="flex flex-col h-full gap-5 px-4 rounded-md md:px-0">
-        <div className="flex flex-col">
+      <div className="flex flex-col items-start justify-center w-full h-full gap-5 px-4 rounded-md md:items-center md:px-0">
+        <div className="flex flex-col items-start justify-center w-full md:items-center">
           <h2 className="text-[24px] font-semibold ">Sign Out</h2>
           <p className="text-[#63707f]  text-[14px]">
             Sign out of your account on this browser.
