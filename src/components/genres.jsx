@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { LoadingSpinner } from "../elements/Icons";
+import { Link } from "react-router-dom";
 
 const Genres = (props) => {
   const [topGenres, setTopGenres] = useState([]);
@@ -49,9 +50,9 @@ const Genres = (props) => {
           {topGenres.map((item, index) => {
             return (
               <div key={item.id} className="py-4 ">
-                <h2 className="flex">
-                  <span className="text-[#9ca3af] mr-2">{index + 1}</span>
-                  <span className=""> {item}</span>
+                <h2 className="flex items-center">
+                  <span className="text-[#9ca3af] text-[12px] mr-2 pt-1">{index + 1}</span>
+                  <Link to={`/genre/${item}`} className=""> {item}</Link>
                 </h2>
               </div>
             );

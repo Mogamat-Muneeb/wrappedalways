@@ -44,7 +44,7 @@ const Artists = (props) => {
           return (
             <div key={item.id}>
               <div className="flex items-center gap-2">
-                <span className="text-[#9ca3af]">{index + 1}</span>
+                <span className="text-[#9ca3af] text-[12px] mr-2 pt-1">{index + 1}</span>
                 <img
                   src={item.images[2].url}
                   alt=""

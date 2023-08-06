@@ -4,6 +4,7 @@ import Account from "./components/Account";
 import Navbar from "./elements/Navbar";
 import { useEffect, useState } from "react";
 import { LoadingSpinner } from "./elements/Icons";
+import GenreInfo from "./components/genreInfo";
 
 function App() {
   const [token, setToken] = useState("");
@@ -101,6 +102,10 @@ function App() {
                   <Navigate to="/" />
                 )
               }
+            />
+            <Route
+              path="/genre/:name"
+              element={token ? <GenreInfo token={token} /> : <Navigate to="/" />}
             />
           </Routes>
         </div>

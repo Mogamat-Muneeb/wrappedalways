@@ -39,9 +39,9 @@ const Tracks = (props) => {
           console.log(item.album.images[2], " the tracks");
           return (
             <div key={item.id}>
-              <div className="flex ">
+              <div className="flex items-center ">
                 <div>
-                  <span className="text-[#9ca3af] pr-2">{index + 1}</span>
+                  <span className="text-[#9ca3af] text-[12px] pt-1 pr-2">{index + 1}</span>
                 </div>
                 <div className="flex gap-3 ">
                   <img

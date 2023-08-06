@@ -39,8 +39,8 @@ const Playlists = (props) => {
           return (
             <div key={item.id}>
               <div className="pb-5 ">
-                <h2 className="pb-5">
-                  <span className="text-[#9ca3af] pr-2">{index + 1}</span>
+                <h2 className="flex items-center pb-5">
+                  <span className="text-[#9ca3af] text-[12px] mt-[1px]  pr-2">{index + 1}</span>
                   <span className="text-[16px] font-semibold">{item.name}</span>
                 </h2>
                 {item?.images.map((value, index) => {

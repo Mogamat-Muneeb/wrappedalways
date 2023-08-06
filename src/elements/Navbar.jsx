@@ -35,7 +35,7 @@ export default function Navbar(props) {
       </div>
     );
   }
-  console.log("🚀 ~ file: Navbar.jsx:27 ~ Navbar ~ userData:", userData);
+  // console.log("🚀 ~ file: Navbar.jsx:27 ~ Navbar ~ userData:", userData);
 
   return (
     <>
