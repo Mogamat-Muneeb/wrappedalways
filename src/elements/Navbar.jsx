@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
-import { RxCross2 } from "react-icons/rx";
+// import { RxCross2 } from "react-icons/rx";
+import { HiOutlineLogout } from "react-icons/hi";
 import { HiDotsVertical } from "react-icons/hi";
+import { ImStatsBars } from "react-icons/im";
+import { BsFillPersonFill } from "react-icons/bs";
 
 import { LoadingSpinner, LogoIcon } from "../elements/Icons";
 export default function Navbar(props) {
@@ -32,6 +35,7 @@ export default function Navbar(props) {
       </div>
     );
   }
+  console.log("🚀 ~ file: Navbar.jsx:27 ~ Navbar ~ userData:", userData);
 
   return (
     <>
@@ -43,35 +47,58 @@ export default function Navbar(props) {
             }`}
           >
             <div className="flex flex-col w-full gap-10 ">
-              <Link to="/" className="flex items-start justify-start ">
+              <Link
+                to="/"
+                className="flex items-start justify-start px-4  text-[12px] font-bold "
+              >
                 <LogoIcon />
               </Link>
 
-              <div className="flex flex-col gap-10 px-2 ">
+              <div className="flex flex-col items-start justify-center gap-10 px-4 text-left ">
                 <Link
                   to="/"
-                  className={`font-medium  ${
+                  className={`font-medium flex gap-1 items-center  ${
                     location.pathname === "/" && "text-[#22c55e]"
                   }`}
                 >
+                  <ImStatsBars
+                    className={`${
+                      location.pathname === "/" && "fill-[#22c55e]"
+                    }`}
+                  />{" "}
                   Stats
                 </Link>
                 <Link
                   to="account"
-                  className={`font-medium  ${
+                  className={`font-medium flex items-center gap-1  ${
                     location.pathname === "/account" && "text-[#22c55e]"
                   }`}
                 >
+                  <BsFillPersonFill
+                    className={`${
+                      location.pathname === "/account" && "fill-[#22c55e]"
+                    }`}
+                  />{" "}
                   Account
                 </Link>
               </div>
               <div className="fixed flex flex-col items-center px-2 bottom-10">
-                <img
-                  src={userData.images[0]?.url}
-                  alt="Profile"
-                  className="w-10 h-10 shadow border-white rounded-full border-[3px] bg-[url('https://i.postimg.cc/MGrqp8xj/Group-5.jpg)] "
-                />
-                <button onClick={props.logout}>Logout</button>
+                <div className="flex items-center gap-1">
+                  <img
+                    src={userData.images[0]?.url}
+                    alt="Profile"
+                    className="w-9 h-9 shadow border-white rounded-full border-[3px] bg-[url('https://i.postimg.cc/MGrqp8xj/Group-5.jpg)] "
+                  />
+                  <Link to="account" className="text-[14px] font-medium">
+                    {userData.display_name}
+                  </Link>
+                </div>
+                <button
+                  onClick={props.logout}
+                  className="px-6 py-2 rounded bg-[#EFEFEF] font-medium text-[14px] mt-4 flex items-center gap-1"
+                >
+                  <HiOutlineLogout className="text-[17px]" /> Log Out
+                </button>
               </div>
             </div>
           </div>

@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    /* background: #f3f4f6 ; */
-    color: #1f2937;
+* {
+  color: #2e2e31;
 }
-
-
-
-/* #1D8954 */
-/* #191414 */
