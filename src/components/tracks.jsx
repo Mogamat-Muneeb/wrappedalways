@@ -36,7 +36,7 @@ const Tracks = (props) => {
       {tracks.length === 0 && <div>You dont have any Top Tracks yet!</div>}
       <div className="flex flex-col gap-6 pt-5">
         {tracks.map((item, index) => {
-          console.log(item.album.images[2], " the tracks");
+          // console.log(item.album.images[2], " the tracks");
           return (
             <div key={item.id}>
               <div className="flex ">

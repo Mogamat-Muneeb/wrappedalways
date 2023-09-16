@@ -4,6 +4,7 @@ import Account from "./components/Account";
 import Navbar from "./elements/Navbar";
 import { useEffect, useState } from "react";
 import { LoadingSpinner } from "./elements/Icons";
+import CurrentPlaying from "./components/CurrentPlaying";
 
 function App() {
   const [token, setToken] = useState("");
@@ -55,11 +56,11 @@ function App() {
 
   return (
     <>
-      <div className="hidden w-full md:flex ">
-        <div className={` ${token && "sticky w-[160px] z-[60]"}`}>
+      <div className="hidden md:grid md:grid-cols-12">
+        <div className={` ${token && "sticky  z-[60] px-3 bg-gray-100 py-3 md:py-6 md:col-span-1 space-y-2 md:min-h-screen"}`}>
           <Navbar token={token} logout={logout} />
         </div>
-        <div className="w-full bg-gray-100 md:max-h-screen ">
+        <div className="p-8 space-y-8 bg-gray-100 md:col-span-11">
           <Routes>
             <Route
               path="/"
@@ -85,9 +86,13 @@ function App() {
                       </a>
                     </div>
                   ) : (
-                    <div className="flex flex-col gap-2 md:px-0 px-2 max-w-[1285px] mx-auto w-full">
-                      <Stats userData={userData} token={token} />
-                    </div>
+                    <>
+                      <div className="flex flex-col gap-2 md:px-0 px-2 max-w-[1285px] mx-auto w-full">
+                        <Stats userData={userData} token={token} />
+                      </div>
+
+                      <CurrentPlaying userData={userData} token={token} />
+                    </>
                   )}
                 </div>
               }
@@ -105,6 +110,8 @@ function App() {
           </Routes>
         </div>
       </div>
+
+    {/* MOBILE */}
       <div className="md:hidden bock">
         <Navbar token={token} logout={logout} />
         <Routes>
@@ -133,6 +140,7 @@ function App() {
                 ) : (
                   <div className="flex flex-col gap-2 md:px-0 px-2 h-full  md:mt-32 mt-10 max-w-[1285px] mx-auto w-full">
                     <Stats userData={userData} token={token} />
+                    <CurrentPlaying userData={userData} token={token} />
                   </div>
                 )}
               </div>

@@ -35,14 +35,14 @@ export default function Navbar(props) {
       </div>
     );
   }
-  console.log("🚀 ~ file: Navbar.jsx:27 ~ Navbar ~ userData:", userData);
+  // console.log("🚀 ~ file: Navbar.jsx:27 ~ Navbar ~ userData:", userData);
 
   return (
     <>
       {props.token ? (
         <>
           <div
-            className={`text-white h-screen md:flex hidden items-start justify-start flex-col gap-10 shadow-sm z-50 bg-white py-10 ${
+            className={`text-white h-screen md:flex hidden items-start rounded-md justify-start flex-col  relative gap-10 shadow-sm z-50 bg-white py-10 ${
               location.pathname === "/stats" && "shadow-none"
             }`}
           >
@@ -65,7 +65,7 @@ export default function Navbar(props) {
                     className={`${
                       location.pathname === "/" && "fill-[#22c55e]"
                     }`}
-                  />{" "}
+                  />
                   Stats
                 </Link>
                 <Link
@@ -78,28 +78,29 @@ export default function Navbar(props) {
                     className={`${
                       location.pathname === "/account" && "fill-[#22c55e]"
                     }`}
-                  />{" "}
+                  />
                   Account
                 </Link>
               </div>
-              <div className="fixed flex flex-col items-center px-2 bottom-10">
-                <div className="flex items-center gap-1">
-                  <img
-                    src={userData.images[0]?.url}
-                    alt="Profile"
-                    className="w-9 h-9 shadow border-white rounded-full border-[3px] bg-[url('https://i.postimg.cc/MGrqp8xj/Group-5.jpg)] "
-                  />
-                  <Link to="account" className="text-[14px] font-medium">
-                    {userData.display_name}
-                  </Link>
+                <div className="absolute px-2 bottom-12">
+                  <div className="flex items-center gap-1">
+                    <img
+                      src={userData.images[0]?.url}
+                      alt="Profile"
+                      className="w-9 h-9 shadow border-white rounded-full border-[3px] bg-[url('https://i.postimg.cc/MGrqp8xj/Group-5.jpg)] "
+                    />
+                    <Link to="account" className="text-[14px] font-medium">
+                      {userData.display_name}
+                    </Link>
+                  </div>
+                  <button
+                    onClick={props.logout}
+                    className="w-full py-2 rounded bg-[#EFEFEF] font-medium text-[14px] mt-4 flex items-center gap-1 flex-col"
+                  >
+                    <HiOutlineLogout className="text-[17px]" /> Log Out
+                  </button>
                 </div>
-                <button
-                  onClick={props.logout}
-                  className="px-6 py-2 rounded bg-[#EFEFEF] font-medium text-[14px] mt-4 flex items-center gap-1"
-                >
-                  <HiOutlineLogout className="text-[17px]" /> Log Out
-                </button>
-              </div>
+
             </div>
           </div>
         </>
