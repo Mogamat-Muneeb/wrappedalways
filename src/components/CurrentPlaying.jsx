@@ -3,6 +3,7 @@ import axios from "axios";
 
 const CurrentPlaying = (props) => {
   const [currentSong, setCurrentSong] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (!props.token) return;
@@ -22,16 +23,20 @@ const CurrentPlaying = (props) => {
         const albumCover = response.data.item.album.images[0].url;
 
         setCurrentSong({ trackName, artistName, albumName, albumCover });
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching current song: ", error);
+        setIsLoading(false);
       });
   }, [props.token]);
 
   return (
     <div className="w-full max-w-[1220px] mx-auto">
       <div className="flex w-full max-w-[1220px] mx-auto justify-center md:gap-0 gap-2 z-40 h-14 shadow-sm fixed md:bottom-12 bottom-24 bg-white items-center px-2 rounded-md">
-        {currentSong ? (
+        {isLoading ? (
+          "Loading..."
+        ) : currentSong ? (
           <div className="flex ">
             <div className="flex flex-col">
               <p>{currentSong.trackName}</p>
@@ -48,7 +53,7 @@ const CurrentPlaying = (props) => {
             </div>
           </div>
         ) : (
-          "Loading..."
+          <div className="">"Nothing is playing at the moment"</div>
         )}
       </div>
     </div>
