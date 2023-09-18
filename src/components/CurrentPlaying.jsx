@@ -53,7 +53,9 @@ const CurrentPlaying = (props) => {
             </div>
           </div>
         ) : (
-          <div className="">"Nothing is playing at the moment"</div>
+          <div className="">
+            <p>Nothing is playing at the moment</p>
+          </div>
         )}
       </div>
     </div>
