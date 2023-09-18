@@ -148,10 +148,15 @@ function App() {
                     </a>
                   </div>
                 ) : (
-                  <div className="flex flex-col gap-2 md:px-0 px-2 h-full  md:mt-32 mt-10 max-w-[1285px] mx-auto w-full">
-                    <Stats userData={userData} token={token} />
+                  <>
+                    <div className="flex flex-col gap-2 md:px-0 px-2 h-full  md:mt-32 mt-10 max-w-[1285px] mx-auto w-full">
+                      <Stats userData={userData} token={token} />
+                    </div>
+                    <div className="mx-3">
                     <CurrentPlaying userData={userData} token={token} />
-                  </div>
+
+                    </div>
+                  </>
                 )}
               </div>
             }
