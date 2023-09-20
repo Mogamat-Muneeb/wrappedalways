@@ -8,7 +8,7 @@ const Stats = (props) => {
 
   return (
     <div className="relative flex flex-col items-center justify-center h-full ">
-      <div className="sticky top-0 bg-gray-100  w-full   mx-auto z-[60] ">
+      <div className="sticky lg:top-0 top-14 bg-gray-100  w-full   mx-auto z-[60] ">
         <div className="flex items-center justify-center w-full gap-2 px-2 mx-auto mt-4 bg-white rounded-md shadow-sm md:gap-0 h-14 ">
           <div
             className={`cursor-pointer   justify-center font-semibold bg-transparent flex items-center w-full h-14   ${
@@ -52,7 +52,7 @@ const Stats = (props) => {
           </div>
         </div>
       </div>
-      <div className="w-full max-w-[1220px] mx-auto ">
+      <div className="w-full max-w-[1220px] mx-auto lg:pt-0 pt-10 pb-10 lg:pb-0">
         {showing === "Top Genres" && (
           <>
             <div id="Genres">

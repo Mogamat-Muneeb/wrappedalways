@@ -128,7 +128,7 @@ export default function SideBar(props) {
               open
                 ? " transition-all duration-500 w-10  bg-white opacity-100 shadow  "
                 : " -translate-y-full  transition-all duration-700 w-10 bg-white opacity-10"
-            } fixed  z-50   m-2  right-0 w-32  top-0 rounded-md shadow-2xl `}
+            } fixed  z-[70]   m-2  right-0 w-32  top-0 rounded-md shadow-2xl `}
           >
             <div className="flex flex-col gap-4 p-2 ">
               <div className="flex justify-end">
