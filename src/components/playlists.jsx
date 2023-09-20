@@ -39,7 +39,7 @@ const Playlists = (props) => {
   return (
     <div>
       {playlistCount === 0 && <div>You don't have any Playlists yet</div>}
-      <div className="text-[16px] font-semibold flex gap-1">
+      <div className="text-[16px] font-semibold flex gap-1 lg:pt-10 pt-4">
         You currently have
         <p className="text-[#22c55e]">
           {playlistCount > 1
@@ -47,26 +47,25 @@ const Playlists = (props) => {
             : `${playlistCount} Playlist`}
         </p>
       </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-3">
+      <div className="grid lg:grid-cols-3 grid-cols-2 pt-[10px]">
         {playlist.items?.map((item, index) => (
           <div key={item.name}>
-            <div className="flex flex-col items-center pb-5">
-              <div className="pb-5">
-                <p className="text-[#9ca3af] pr-2">{index + 1}</p>
-                <p className="text-[16px] font-semibold">{item.name}</p>
-              </div>
+            <div className="flex flex-col items-start justify-start  max-w-[200px] mx-auto w-full">
               {item?.images.map((value) => (
                 <div key={value.url}>
                   <div className="">
                     <img
                       src={value.url}
-                      className="relative w-32 h-32 bg-cover rounded lg:w-56 lg:h-56 md:w-44 md:h-44"
+                      className="relative object-cover w-32 h-32 rounded shadow-sm lg:w-44 lg:h-44 "
                       alt=""
                     />
                   </div>
                 </div>
               ))}
+              <p className="lg:text-[16px] text-[14px] ">
+                {/* <span className="text-[#9ca3af] ">{index + 1} </span> */}
+                <span className="font-semibold">{item.name}</span>
+              </p>
             </div>
           </div>
         ))}

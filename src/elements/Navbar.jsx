@@ -52,6 +52,15 @@ export default function SideBar(props) {
               >
                 <LogoIcon />
               </Link>
+              <div className="flex items-center justify-center">
+                <Link to="account">
+                  <img
+                    src={userData.images[0]?.url}
+                    alt="Profile"
+                    className="w-9 h-9 shadow border-white rounded-full border-[3px] bg-[url('https://i.postimg.cc/MGrqp8xj/Group-5.jpg)] "
+                  />
+                </Link>
+              </div>
 
               <div className="flex flex-col items-center gap-10 px-4 text-left ">
                 <Link
@@ -80,16 +89,6 @@ export default function SideBar(props) {
                 </Link>
               </div>
               <div className="">
-                {/* <div className="flex items-center gap-1">
-                  <img
-                    src={userData.images[0]?.url}
-                    alt="Profile"
-                    className="w-9 h-9 shadow border-white rounded-full border-[3px] bg-[url('https://i.postimg.cc/MGrqp8xj/Group-5.jpg)] "
-                  />
-                  <Link to="account" className="text-[14px] font-medium">
-                    {userData.display_name}
-                  </Link>
-                </div> */}
                 <button
                   onClick={props.logout}
                   className="w-full py-2 rounded  font-medium text-[14px] mt-4 flex items-center gap-1 flex-col"
