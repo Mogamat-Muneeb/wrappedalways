@@ -62,12 +62,18 @@ const CurrentPlaying = (props) => {
     );
   }
 
-  if (!currentSong) {
-    return null;
-  }
+  // if (!currentSong) {
+  //   return null;
+  // }
 
   return (
-    <div className="w-full max-w-[1220px] mx-auto flex justify-center items-center">
+    <div
+      className={` ${
+        currentSong.trackName
+          ? "w-full max-w-[1220px] mx-auto hidden justify-center items-center"
+          : "hidden"
+      }`}
+    >
       <div className="md:flex hidden w-full max-w-[1220px] mx-auto justify-center md:gap-0 gap-2 z-40 h-14 shadow-sm fixed md:bottom-12 bottom-24 bg-[#22c55e] items-center px-2 rounded-md">
         <div className="flex gap-4">
           <div className="flex flex-col">

@@ -8,7 +8,7 @@ import { ImStatsBars } from "react-icons/im";
 import { BsFillPersonFill } from "react-icons/bs";
 
 import { LoadingSpinner, LogoIcon } from "../elements/Icons";
-export default function Navbar(props) {
+export default function SideBar(props) {
   const [open, setOpen] = useState(false);
   const [userData, setUserData] = useState(null);
   const handleClick = () => {
@@ -35,7 +35,6 @@ export default function Navbar(props) {
       </div>
     );
   }
-  // console.log("🚀 ~ file: Navbar.jsx:27 ~ Navbar ~ userData:", userData);
 
   return (
     <>
@@ -54,7 +53,7 @@ export default function Navbar(props) {
                 <LogoIcon />
               </Link>
 
-              <div className="flex flex-col items-start justify-center gap-10 px-4 text-left ">
+              <div className="flex flex-col items-center gap-10 px-4 text-left ">
                 <Link
                   to="/"
                   className={`font-medium flex gap-1 items-center  ${
@@ -66,7 +65,6 @@ export default function Navbar(props) {
                       location.pathname === "/" && "fill-[#22c55e]"
                     }`}
                   />
-                  Stats
                 </Link>
                 <Link
                   to="account"
@@ -79,28 +77,26 @@ export default function Navbar(props) {
                       location.pathname === "/account" && "fill-[#22c55e]"
                     }`}
                   />
-                  Account
                 </Link>
               </div>
-                <div className="absolute px-2 bottom-12">
-                  <div className="flex items-center gap-1">
-                    <img
-                      src={userData.images[0]?.url}
-                      alt="Profile"
-                      className="w-9 h-9 shadow border-white rounded-full border-[3px] bg-[url('https://i.postimg.cc/MGrqp8xj/Group-5.jpg)] "
-                    />
-                    <Link to="account" className="text-[14px] font-medium">
-                      {userData.display_name}
-                    </Link>
-                  </div>
-                  <button
-                    onClick={props.logout}
-                    className="w-full py-2 rounded bg-[#EFEFEF] font-medium text-[14px] mt-4 flex items-center gap-1 flex-col"
-                  >
-                    <HiOutlineLogout className="text-[17px]" /> Log Out
-                  </button>
-                </div>
-
+              <div className="">
+                {/* <div className="flex items-center gap-1">
+                  <img
+                    src={userData.images[0]?.url}
+                    alt="Profile"
+                    className="w-9 h-9 shadow border-white rounded-full border-[3px] bg-[url('https://i.postimg.cc/MGrqp8xj/Group-5.jpg)] "
+                  />
+                  <Link to="account" className="text-[14px] font-medium">
+                    {userData.display_name}
+                  </Link>
+                </div> */}
+                <button
+                  onClick={props.logout}
+                  className="w-full py-2 rounded  font-medium text-[14px] mt-4 flex items-center gap-1 flex-col"
+                >
+                  <HiOutlineLogout className="text-[17px]" />
+                </button>
+              </div>
             </div>
           </div>
         </>

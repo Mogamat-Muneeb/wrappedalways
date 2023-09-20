@@ -39,28 +39,29 @@ const Playlists = (props) => {
   return (
     <div>
       {playlistCount === 0 && <div>You don't have any Playlists yet</div>}
-      <h2 className="text-[16px] font-semibold flex gap-1">
+      <div className="text-[16px] font-semibold flex gap-1">
         You currently have
-        <span className="text-[#22c55e]">
+        <p className="text-[#22c55e]">
           {playlistCount > 1
-            ? `${playlistCount} playlists`
-            : `${playlistCount} playlist`}
-        </span>
-      </h2>
-      <div className="flex flex-wrap grid-cols-5 gap-4 pt-10 md:grid">
+            ? `${playlistCount} Playlists`
+            : `${playlistCount} Playlist`}
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 md:grid-cols-3">
         {playlist.items?.map((item, index) => (
           <div key={item.name}>
-            <div className="pb-5">
-              <h2 className="pb-5">
-                <span className="text-[#9ca3af] pr-2">{index + 1}</span>
-                <span className="text-[16px] font-semibold">{item.name}</span>
-              </h2>
+            <div className="flex flex-col items-center pb-5">
+              <div className="pb-5">
+                <p className="text-[#9ca3af] pr-2">{index + 1}</p>
+                <p className="text-[16px] font-semibold">{item.name}</p>
+              </div>
               {item?.images.map((value) => (
                 <div key={value.url}>
                   <div className="">
                     <img
                       src={value.url}
-                      className="relative w-56 h-56 bg-cover rounded shadow-xl"
+                      className="relative w-32 h-32 bg-cover rounded lg:w-56 lg:h-56 md:w-44 md:h-44"
                       alt=""
                     />
                   </div>
