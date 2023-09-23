@@ -55,7 +55,7 @@ const CurrentPlaying = (props) => {
   if (isLoading) {
     return (
       <div className="w-full max-w-[1220px] mx-auto">
-        <div className="flex w-full max-w-[1220px] mx-auto justify-center md:gap-0 gap-2 z-40 h-14 shadow-sm fixed md:bottom-12 bottom-24 bg-[#22c55e] items-center px-2 rounded-md">
+        <div className="hidden w-full max-w-[1220px] mx-auto justify-center md:gap-0 gap-2 z-40 h-14 shadow-sm fixed md:bottom-12 bottom-24 bg-[#22c55e] items-center px-2 rounded-md">
           Loading...
         </div>
       </div>
@@ -70,16 +70,18 @@ const CurrentPlaying = (props) => {
     <div
       className={` ${
         currentSong.trackName
-          ? "w-full max-w-[1220px] mx-auto hidden justify-center items-center"
+          ? "w-full max-w-[1220px] mx-auto flex justify-center lg:justify-end items-center"
           : "hidden"
       }`}
     >
-      <div className="md:flex hidden w-full max-w-[1220px] mx-auto justify-center md:gap-0 gap-2 z-40 h-14 shadow-sm fixed md:bottom-12 bottom-24 bg-[#22c55e] items-center px-2 rounded-md">
-        <div className="flex gap-4">
+      <div className="md:flex hidden w-full max-w-[400px] mx-auto justify-center md:gap-0 gap-2 z-40 h-[100px] shadow-sm fixed md:bottom-12 bottom-24  bg-[#22c55e]  items-center px-2 rounded-md">
+        <div className="flex items-center gap-4">
           <div className="flex flex-col">
-            <p className="font-bold text-white">{currentSong.trackName}</p>
-            <p className="text-white font-medium text-[13px]">
-              {currentSong.albumName} / {currentSong.artistName}
+            <p className="font-semibold text-[14] lg:text-[16px] leading-4 pb-1 text-white max-w-[200px] w-full">
+              {currentSong.trackName}
+            </p>
+            <p className="text-white font-thin text-[13px] max-w-[200px] w-full flex items-center">
+              {currentSong.artistName} / {currentSong.albumName}
             </p>
           </div>
           <div>
@@ -96,6 +98,7 @@ const CurrentPlaying = (props) => {
           <p>No active device found.</p>
         )} */}
       </div>
+      {/* MOBILE */}
       <div className="fixed z-40 flex items-center justify-center max-w-[400px] mx-auto w-full gap-2 px-1 bg-[#22c55e] rounded-sm shadow-sm md:hidden md:gap-0 max-h-[150px] h-full py-2 md:bottom-12 bottom-24">
         <div className="flex gap-4">
           <div className="flex flex-col">

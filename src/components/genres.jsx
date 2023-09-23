@@ -52,7 +52,7 @@ const Genres = (props) => {
   return (
     <div>
       {topGenres.length ? (
-        <div className="flex flex-col gap-3 pt-5">
+        <div className="flex flex-col gap-3 ">
           {topGenres.map((item, index) => (
             <div key={item} className="py-4">
               <h2 className="flex">

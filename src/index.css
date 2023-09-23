@@ -11,3 +11,21 @@
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 
 }
+
+
+.currentPlayingSong {
+  background: none;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center; */
+  width: 100%;
+  z-index: 3000;
+  /* padding: 0 24px; */
+  /* height: 64px; */
+  box-shadow: inset 0 -1px 0 0 var(--accents-2);
+  transform: translateZ(0);
+  -webkit-backdrop-filter: saturate(180%) blur(5px);
+  backdrop-filter: saturate(180%) blur(5px);
+  background: hsla(0,0%,100%,.8);
+}
