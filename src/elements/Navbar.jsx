@@ -8,7 +8,7 @@ import { ImStatsBars } from "react-icons/im";
 import { BsFillPersonFill } from "react-icons/bs";
 
 import { LoadingSpinner, LogoIcon } from "../elements/Icons";
-export default function Navbar(props) {
+export default function SideBar(props) {
   const [open, setOpen] = useState(false);
   const [userData, setUserData] = useState(null);
   const handleClick = () => {
@@ -35,14 +35,13 @@ export default function Navbar(props) {
       </div>
     );
   }
-  console.log("🚀 ~ file: Navbar.jsx:27 ~ Navbar ~ userData:", userData);
 
   return (
     <>
       {props.token ? (
         <>
           <div
-            className={`text-white h-screen md:flex hidden items-start justify-start flex-col gap-10 shadow-sm z-50 bg-white py-10 ${
+            className={`text-white h-screen md:flex hidden items-start rounded-md justify-start flex-col  relative gap-10 shadow-sm z-50 bg-white py-10 ${
               location.pathname === "/stats" && "shadow-none"
             }`}
           >
@@ -53,8 +52,17 @@ export default function Navbar(props) {
               >
                 <LogoIcon />
               </Link>
+              <div className="flex items-center justify-center">
+                <Link to="account">
+                  <img
+                    src={userData.images[0]?.url}
+                    alt="Profile"
+                    className="w-9 h-9 shadow border-white rounded-full border-[3px] bg-[url('https://i.postimg.cc/MGrqp8xj/Group-5.jpg)] "
+                  />
+                </Link>
+              </div>
 
-              <div className="flex flex-col items-start justify-center gap-10 px-4 text-left ">
+              <div className="flex flex-col items-center gap-10 px-4 text-left ">
                 <Link
                   to="/"
                   className={`font-medium flex gap-1 items-center  ${
@@ -65,8 +73,7 @@ export default function Navbar(props) {
                     className={`${
                       location.pathname === "/" && "fill-[#22c55e]"
                     }`}
-                  />{" "}
-                  Stats
+                  />
                 </Link>
                 <Link
                   to="account"
@@ -78,26 +85,15 @@ export default function Navbar(props) {
                     className={`${
                       location.pathname === "/account" && "fill-[#22c55e]"
                     }`}
-                  />{" "}
-                  Account
+                  />
                 </Link>
               </div>
-              <div className="fixed flex flex-col items-center px-2 bottom-10">
-                <div className="flex items-center gap-1">
-                  <img
-                    src={userData.images[0]?.url}
-                    alt="Profile"
-                    className="w-9 h-9 shadow border-white rounded-full border-[3px] bg-[url('https://i.postimg.cc/MGrqp8xj/Group-5.jpg)] "
-                  />
-                  <Link to="account" className="text-[14px] font-medium">
-                    {userData.display_name}
-                  </Link>
-                </div>
+              <div className="">
                 <button
                   onClick={props.logout}
-                  className="px-6 py-2 rounded bg-[#EFEFEF] font-medium text-[14px] mt-4 flex items-center gap-1"
+                  className="w-full py-2 rounded  font-medium text-[14px] mt-4 flex items-center gap-1 flex-col"
                 >
-                  <HiOutlineLogout className="text-[17px]" /> Log Out
+                  <HiOutlineLogout className="text-[17px]" />
                 </button>
               </div>
             </div>
@@ -131,7 +127,7 @@ export default function Navbar(props) {
               open
                 ? " transition-all duration-500 w-10  bg-white opacity-100 shadow  "
                 : " -translate-y-full  transition-all duration-700 w-10 bg-white opacity-10"
-            } fixed  z-50   m-2  right-0 w-32  top-0 rounded-md shadow-2xl `}
+            } fixed  z-[70]   m-2  right-0 w-32  top-0 rounded-md shadow-2xl `}
           >
             <div className="flex flex-col gap-4 p-2 ">
               <div className="flex justify-end">

@@ -59,7 +59,7 @@ export default function Account(props) {
 
       <div className="flex flex-col items-start justify-center w-full h-full gap-5 px-4 rounded-md md:items-center md:px-0">
         <div className="flex flex-col items-start justify-center w-full md:items-center">
-          <h2 className="text-[24px] font-extrabold ">Display Name</h2>
+          <h2 className="text-[24px] font-semibold ">Display Name</h2>
           <p className="text-[#63707f]  text-[14px]">
             The name you are using on spotify.
           </p>
@@ -75,7 +75,7 @@ export default function Account(props) {
         <div className="flex flex-col items-start justify-center w-full md:items-center">
           <h2 className="text-[24px] font-semibold ">Plan</h2>
           <p className="text-[#63707f]  text-[14px]">
-            Your spotify plan at the current moment
+            Your spotify plan at the current moment.
           </p>
         </div>
         <div>
