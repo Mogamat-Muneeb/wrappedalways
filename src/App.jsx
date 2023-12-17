@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import Stats from "./components/Stats";
 import Account from "./components/Account";
 import { useEffect, useState } from "react";
@@ -7,9 +7,46 @@ import CurrentPlaying from "./components/CurrentPlaying";
 import SideBar from "./elements/Navbar";
 import NotAuthenticated from "./components/NotAuthenticated";
 
+// function App() {
+//   const [token, setToken] = useState("");
+//   const [userData, setUserData] = useState(null);
+
+//   useEffect(() => {
+//     const hash = window.location.hash;
+//     let token = window.localStorage.getItem("token");
+
+//     if (!token && hash) {
+//       token = hash
+//         .substring(1)
+//         .split("&")
+//         .find((elem) => elem.startsWith("access_token"))
+//         .split("=")[1];
+
+//       window.location.hash = "";
+//       window.localStorage.setItem("token", token);
+//     }
+
+//     setToken(token);
+//   }, []);
+
+//   const logout = () => {
+//     setToken("");
+//     window.localStorage.removeItem("token");
+//   };
+//   useEffect(() => {
+//     fetch("https://api.spotify.com/v1/me", {
+//       headers: {
+//         Authorization: `Bearer  ${token}`,
+//       },
+//     })
+//       .then((response) => response.json())
+//       .then((data) => setUserData(data));
+//   }, [token]);
+
 function App() {
   const [token, setToken] = useState("");
   const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -22,26 +59,90 @@ function App() {
         .find((elem) => elem.startsWith("access_token"))
         .split("=")[1];
 
+      const expiresIn = hash
+        .substring(1)
+        .split("&")
+        .find((elem) => elem.startsWith("expires_in"))
+        .split("=")[1];
+      console.log("🚀 ~ file: App.jsx:67 ~ useEffect ~ expiresIn:", expiresIn)
+
+      const expirationTime = new Date().getTime() + expiresIn * 1000;
+
       window.location.hash = "";
       window.localStorage.setItem("token", token);
+      window.localStorage.setItem("tokenExpiration", expirationTime);
     }
 
     setToken(token);
-  }, []);
+  }, [navigate]);
 
   const logout = () => {
     setToken("");
     window.localStorage.removeItem("token");
+    window.localStorage.removeItem("tokenExpiration");
   };
+
+  const refreshAccessToken = async () => {
+    const refreshToken = window.localStorage.getItem("refreshToken");
+    const clientId = "your_client_id";
+    const clientSecret = "your_client_secret";
+
+    const response = await fetch("https://accounts.spotify.com/api/token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: `Basic ${btoa(`${clientId}:${clientSecret}`)}`,
+      },
+      body: new URLSearchParams({
+        grant_type: "refresh_token",
+        refresh_token: refreshToken,
+      }),
+    });
+
+    if (!response.ok) {
+      console.error("Failed to refresh access token");
+      return null;
+    }
+
+    const data = await response.json();
+    const newAccessToken = data.access_token;
+    const newExpirationTime = new Date().getTime() + data.expires_in * 1000;
+
+    // Update the token and expiration time in local storage
+    window.localStorage.setItem("token", newAccessToken);
+    window.localStorage.setItem("tokenExpiration", newExpirationTime);
+
+    return newAccessToken;
+  };
+
+  const checkTokenExpiration = async () => {
+    const expirationTime = window.localStorage.getItem("tokenExpiration");
+
+    if (expirationTime && new Date().getTime() > expirationTime) {
+      // Token has expired, refresh it
+      const newAccessToken = await refreshAccessToken();
+
+      if (newAccessToken) {
+        // If refresh was successful, set the new token
+        setToken(newAccessToken);
+      } else {
+        // Handle the case where refresh failed, e.g., redirect to login
+        navigate("/login");
+      }
+    }
+  };
+
   useEffect(() => {
+    checkTokenExpiration();
+
     fetch("https://api.spotify.com/v1/me", {
       headers: {
-        Authorization: `Bearer  ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => response.json())
       .then((data) => setUserData(data));
-  }, [token]);
+  }, [token, navigate]);
 
   if (!userData) {
     return (

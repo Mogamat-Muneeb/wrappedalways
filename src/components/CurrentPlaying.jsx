@@ -82,7 +82,7 @@ const CurrentPlaying = (props) => {
   return (
     <div
       className={` ${
-        currentSong.trackName
+        currentSong?.trackName
           ? "w-full max-w-[1220px] mx-auto flex justify-center lg:justify-end items-center"
           : "hidden"
       }`}
@@ -93,15 +93,15 @@ const CurrentPlaying = (props) => {
             <div className="flex flex-col">
               {/* <button onClick={handleToggleVisibility}> Close</button> */}
               <p className="font-semibold text-[14] lg:text-[16px] leading-4 pb-1 text-white max-w-[200px] w-full">
-                {currentSong.trackName}
+                {currentSong?.trackName}
               </p>
               <p className="text-white font-thin text-[13px] max-w-[400px] w-full flex items-center">
-                {currentSong.artistName} / {currentSong.albumName}
+                {currentSong?.artistName} / {currentSong?.albumName}
               </p>
             </div>
             <div>
               <img
-                src={currentSong.albumCover}
+                src={currentSong?.albumCover}
                 alt=""
                 className="object-cover w-12 h-12 rounded-md"
               />
@@ -110,7 +110,7 @@ const CurrentPlaying = (props) => {
           {activeDevice ? (
             <p className="text-white text-[10px] flex gap-1">
               <MdDevices className="text-[16px] !fill-white" />{" "}
-              {activeDevice.name}
+              {activeDevice?.name}
             </p>
           ) : (
             <></>
@@ -123,15 +123,15 @@ const CurrentPlaying = (props) => {
           <div className="flex items-center gap-4">
             <div className="flex flex-col">
               <p className="font-semibold text-[14] lg:text-[16px] leading-4 pb-1 text-white max-w-[200px] w-full">
-                {currentSong.trackName}
+                {currentSong?.trackName}
               </p>
               <p className="text-white font-thin text-[13px] max-w-[300px] w-full flex items-center">
-                {currentSong.artistName} / {currentSong.albumName}
+                {currentSong?.artistName} / {currentSong?.albumName}
               </p>
             </div>
             <div>
               <img
-                src={currentSong.albumCover}
+                src={currentSong?.albumCover}
                 alt=""
                 className="object-cover w-12 h-12 rounded-md"
               />
@@ -140,7 +140,7 @@ const CurrentPlaying = (props) => {
           {activeDevice ? (
             <p className="text-white text-[10px] flex gap-1">
               <MdDevices className="text-[16px] !fill-white " />
-              {activeDevice.name}
+              {activeDevice?.name}
             </p>
           ) : (
             <></>
