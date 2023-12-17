@@ -67,7 +67,6 @@ const Liked = (props) => {
                   <img
                     src={track.track.album.images[0].url} // Assuming you want the first image
                     alt="Album Cover"
-                    style={{ width: "50px", height: "50px" }}
                     className="relative w-10 h-10 bg-cover rounded shadow-xl"
                   />
                 </div>
