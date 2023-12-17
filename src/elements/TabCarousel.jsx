@@ -20,7 +20,7 @@ const ScrollableMenu = ({ children }) => {
 
   return (
     <div>
-      <div className="absolute flex items-center justify-center overflow-hidden md:max-w-full bg-white max-w-[400px] w-fullƒ">
+      <div className="absolute flex items-center justify-center w-full overflow-hidden bg-white">
         <div className="relative flex items-center justify-between w-full bg-white ">
           <div
             className="bg-white cursor-pointer w-[60px]  h-14 flex justify-center items-center "

@@ -6,6 +6,11 @@ const CurrentPlaying = (props) => {
   const [currentSong, setCurrentSong] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [activeDevice, setActiveDevice] = useState(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleToggleVisibility = () => {
+    setIsVisible((prevVisibility) => !prevVisibility);
+  };
 
   useEffect(() => {
     if (!props.token) return;
@@ -49,15 +54,26 @@ const CurrentPlaying = (props) => {
     return () => clearInterval(intervalId);
   }, [props.token]);
 
-  if (isLoading) {
-    return (
-      <div className="w-full max-w-[1220px] mx-auto">
-        <div className="hidden w-full max-w-[1220px] mx-auto justify-center md:gap-0 gap-2 z-40 h-14 shadow-sm fixed md:bottom-12 bottom-24 bg-[#22c55e] items-center px-2 rounded-md">
-          Loading...
-        </div>
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="w-full max-w-[1220px] mx-auto">
+  //       <div className="hidden w-full max-w-[1220px] mx-auto justify-center md:gap-0 gap-2 z-40 h-14 shadow-sm fixed md:bottom-12 bottom-24 bg-[#22c55e] items-center px-2 rounded-md">
+  //         Loading...
+  //       </div>
+  //     </div>
+  //   );
+  // }
+
+  // if (isLoading || !isVisible) {
+  //   return (
+  //     <div className="w-full max-w-[1220px] mx-auto">
+  //       {/* ... (your loading or hidden content remains unchanged) */}
+  //       <button className="btn" onClick={handleToggleVisibility}>
+  //         Toggle Visibility
+  //       </button>
+  //     </div>
+  //   );
+  // }
 
   // if (!currentSong) {
   //   return null;
@@ -75,6 +91,7 @@ const CurrentPlaying = (props) => {
         <div>
           <div className="flex items-center gap-4">
             <div className="flex flex-col">
+              {/* <button onClick={handleToggleVisibility}> Close</button> */}
               <p className="font-semibold text-[14] lg:text-[16px] leading-4 pb-1 text-white max-w-[200px] w-full">
                 {currentSong.trackName}
               </p>
@@ -101,7 +118,7 @@ const CurrentPlaying = (props) => {
         </div>
       </div>
       {/* MOBILE */}
-      <div className="fixed z-40 flex items-center justify-center max-w-[400px] mx-auto w-full gap-2 px-1 bg-[#22c55e] rounded-sm shadow-sm md:hidden md:gap-0 max-h-[100px] h-full py-2 md:bottom-12 bottom-24">
+      <div className="fixed z-40 flex items-center justify-center max-w-[400px] mx-auto w-full gap-2 px-1 bg-[#22C55ECC] rounded-sm shadow-sm md:hidden md:gap-0 max-h-[100px] h-full py-2 md:bottom-12 bottom-24">
         <div>
           <div className="flex items-center gap-4">
             <div className="flex flex-col">
