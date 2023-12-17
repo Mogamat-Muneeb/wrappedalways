@@ -4,14 +4,13 @@
 
 * {
   color: #2e2e31;
+  scroll-behavior: smooth;
 }
 
 :root {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-
 }
-
 
 .currentPlayingSong {
   background: none;
@@ -27,5 +26,5 @@
   transform: translateZ(0);
   -webkit-backdrop-filter: saturate(180%) blur(5px);
   backdrop-filter: saturate(180%) blur(5px);
-  background: hsla(0,0%,100%,.8);
+  background: hsla(0, 0%, 100%, 0.8);
 }
