@@ -41,7 +41,7 @@ export default function SideBar(props) {
       {props.token ? (
         <>
           <div
-            className={`text-white h-screen md:flex hidden items-start rounded-md justify-start flex-col  relative gap-10 shadow-sm z-50 bg-white py-10 ${
+            className={`text-white h-1/2 md:flex hidden items-start rounded-md justify-start flex-col  relative gap-10 shadow-sm z-50 bg-white py-10 ${
               location.pathname === "/stats" && "shadow-none"
             }`}
           >
