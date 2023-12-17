@@ -55,15 +55,16 @@ const Tracks = React.memo((props) => {
         {tracks.map((item, index) => (
           <div key={item.id}>
             <div className="flex">
-              <div>
-                <span className="text-[#9ca3af] pr-2">{index + 1}</span>
-              </div>
-              <div className="flex gap-3">
-                <img
-                  src={item.album.images[1].url}
-                  alt=""
-                  className="relative w-10 h-10 bg-cover rounded shadow-xl"
-                />
+              <div></div>
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-1 ">
+                  <span className="text-[#9ca3af] pr-2">{index + 1}</span>
+                  <img
+                    src={item.album.images[1].url}
+                    alt=""
+                    className="relative w-10 h-10 bg-cover rounded shadow-xl"
+                  />
+                </div>
                 <h2>
                   <span className="font-medium">{item.name}</span>
                   <div className="flex flex-col">

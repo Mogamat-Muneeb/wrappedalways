@@ -9,6 +9,7 @@ import NotAuthenticated from "./components/NotAuthenticated";
 
 function App() {
   const [token, setToken] = useState("");
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -32,9 +33,6 @@ function App() {
     setToken("");
     window.localStorage.removeItem("token");
   };
-
-  const [userData, setUserData] = useState(null);
-  //  user data
   useEffect(() => {
     fetch("https://api.spotify.com/v1/me", {
       headers: {
@@ -58,19 +56,20 @@ function App() {
   return (
     <>
       <div className="hidden md:grid md:grid-cols-12">
-      <div
+        <div
           className={` ${
             token
               ? "fixed   z-[60] px-3 bg-gray-100 py-3 md:py-6 md:col-span-1 space-y-2 md:min-h-screen"
               : "hidden"
           }`}
-
         >
           <SideBar token={token} logout={logout} />
         </div>
         <div
           className={` bg-gray-100 ${
-            token ? "md:col-span-11 pb-8 px-8 space-y-8 lg:ml-[7%] md:ml-[10%] ml-0" : "md:col-span-12"
+            token
+              ? "md:col-span-11 pb-8 px-8 space-y-8 lg:ml-[7%] md:ml-[10%] ml-0"
+              : "md:col-span-12"
           } `}
         >
           <Routes>

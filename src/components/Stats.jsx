@@ -3,6 +3,7 @@ import Genres from "./genres";
 import Artists from "./artists";
 import Tracks from "./tracks";
 import Playlists from "./playlists";
+import Liked from "./liked";
 const Stats = (props) => {
   const [showing, setShowing] = useState("Top Genres");
 
@@ -50,6 +51,16 @@ const Stats = (props) => {
           >
             Playlists
           </div>
+          <div
+            className={`cursor-pointer   font-semibold  justify-center bg-transparent w-full  flex items-center h-14 ${
+              showing === "Liked Tracks"
+                ? "font-bold text-[#22c55e] transition-all duration-150 md:text-[20px] text-[16px]  "
+                : "font-bold  transition-all duration-150 md:text-[16px] text-[14px]"
+            }`}
+            onClick={() => setShowing("Liked Tracks")}
+          >
+            Liked Tracks
+          </div>
         </div>
       </div>
       <div className="w-full pt-10 pb-10 lg:pt-0 lg:pb-0">
@@ -82,6 +93,11 @@ const Stats = (props) => {
             <div id="Playlists">
               <Playlists token={props.token} />
             </div>
+          </>
+        )}
+        {showing === "Liked Tracks" && (
+          <>
+            <Liked token={props.token} />
           </>
         )}
       </div>

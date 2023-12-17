@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { MdDevices } from "react-icons/md";
 
 const CurrentPlaying = (props) => {
   const [currentSong, setCurrentSong] = useState(null);
@@ -90,7 +91,10 @@ const CurrentPlaying = (props) => {
             </div>
           </div>
           {activeDevice ? (
-            <p className="text-white text-[10px]">{activeDevice.name}</p>
+            <p className="text-white text-[10px] flex gap-1">
+              <MdDevices className="text-[16px] !fill-white" />{" "}
+              {activeDevice.name}
+            </p>
           ) : (
             <></>
           )}
@@ -117,7 +121,10 @@ const CurrentPlaying = (props) => {
             </div>
           </div>
           {activeDevice ? (
-            <p className="text-white text-[10px]">{activeDevice.name}</p>
+            <p className="text-white text-[10px] flex gap-1">
+              <MdDevices className="text-[16px] !fill-white " />
+              {activeDevice.name}
+            </p>
           ) : (
             <></>
           )}
